@@ -1,0 +1,1613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Term Project Checkpoint A</title>
+<style>
+  :root {
+    --paper: #f3f6f4;
+    --sheet: #ffffff;
+    --ink: #1c2420;
+    --muted: #5c6b63;
+    --line: #d5ded8;
+    --up: #1f6b56;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+    font-size: 1.05rem;
+    line-height: 1.65;
+  }
+  .layout {
+    display: grid;
+    grid-template-columns: 220px minmax(0, 42rem);
+    gap: 40px;
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 36px 24px 80px;
+  }
+  nav {
+    position: sticky;
+    top: 24px;
+    align-self: start;
+    max-height: calc(100vh - 48px);
+    overflow: auto;
+    font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 0.74rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+  nav a {
+    display: block;
+    color: var(--ink);
+    text-decoration: none;
+    padding: 7px 0 7px 12px;
+    border-left: 2px solid var(--line);
+  }
+  nav a:hover { border-left-color: var(--up); color: var(--up); }
+  .nav-label {
+    margin: 16px 0 4px 12px;
+    color: var(--muted);
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+  }
+  h1, h2, h3 { font-weight: 650; letter-spacing: -0.02em; line-height: 1.25; }
+  h1 { font-size: 1.7rem; margin: 2.4rem 0 0.8rem; }
+  h2 { font-size: 1.2rem; margin: 1.6rem 0 0.6rem; }
+  h3 { font-size: 1.05rem; margin: 1.2rem 0 0.4rem; }
+  .part > h1:first-child { margin-top: 0; }
+  .part {
+    background: var(--sheet);
+    padding: 28px 32px 8px;
+    margin: 0 0 22px;
+  }
+  p { margin: 0 0 0.85rem; }
+  a { color: var(--up); }
+  ul, ol { margin: 0 0 0.9rem; padding-left: 1.2rem; }
+  li { margin: 0.2rem 0; }
+  li > ul, li > ol { margin-bottom: 0.3rem; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 0.92rem;
+    margin: 0 0 1.2rem;
+  }
+  th {
+    text-align: left;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-bottom: 1px solid var(--ink);
+    padding: 8px 10px 8px 0;
+  }
+  td {
+    border-bottom: 1px solid var(--line);
+    padding: 8px 10px 8px 0;
+    vertical-align: top;
+  }
+  .index > table:first-of-type {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.85rem 1.4rem;
+    margin: 0 0 1.4rem;
+  }
+  .index > table:first-of-type thead { display: none; }
+  .index > table:first-of-type tbody,
+  .index > table:first-of-type tr { display: contents; }
+  .index > table:first-of-type td {
+    border: 0;
+    padding: 0;
+  }
+  .index > table:first-of-type td:first-child {
+    font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .index > table:first-of-type td:last-child {
+    font-size: 1.05rem;
+  }
+  .index > table:first-of-type tr:nth-child(3) td:last-child {
+    font-size: 1.2rem;
+  }
+  .annex-break {
+    margin: 2.2rem 0 0.8rem;
+    padding-top: 0.4rem;
+  }
+  code {
+    font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 0.88em;
+  }
+  @media (max-width: 800px) {
+    .layout { display: block; padding: 20px 16px 48px; }
+    nav { position: static; max-height: none; margin-bottom: 24px; }
+    .part { padding: 22px 18px 4px; }
+    .index > table:first-of-type { grid-template-columns: 1fr; }
+  }
+  @media print {
+    body { background: #fff; }
+    .layout { display: block; max-width: none; padding: 0; }
+    nav { display: none; }
+    .part { padding: 0; margin: 0 0 1.2rem; }
+    h1, h2 { break-after: avoid; }
+    table { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="layout">
+<nav>
+<a href="#00-index">Term Project Checkpoint A</a>
+<a href="#01-introduction">Introduction</a>
+<a href="#02-literature">Literature review</a>
+<a href="#03-methods">Methods</a>
+<a href="#04-results">Results</a>
+<a href="#05-conclusions">Conclusions</a>
+<a href="#06-next-steps">Next steps</a>
+<p class="nav-label">Annexes</p>
+<a href="#annex-literature-review">Literature review Opus 5.5: academic and practitioner sources on portfolios of ETFs</a>
+<a href="#annex-literature-review-02">Literature review Argon 4: lectures and talks on a portfolio of ETFs</a>
+</nav>
+<main>
+<section id="00-index" class="part index"><h1 id="term-project-checkpoint-a">Term Project Checkpoint A</h1>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>University</td>
+<td>Northwestern University</td>
+</tr>
+<tr>
+<td>Program</td>
+<td>Master of Science in Data Science</td>
+</tr>
+<tr>
+<td>Student</td>
+<td>Leandro Loli</td>
+</tr>
+<tr>
+<td>Course</td>
+<td>MSDS 451, Section 001</td>
+</tr>
+<tr>
+<td>Class</td>
+<td>Financial Engineering</td>
+</tr>
+<tr>
+<td>Term</td>
+<td>Fall 2026</td>
+</tr>
+<tr>
+<td>Assignment</td>
+<td>Term Project Checkpoint A</td>
+</tr>
+<tr>
+<td>Date</td>
+<td>October 19, 2026</td>
+</tr>
+</tbody>
+</table>
+<p>The sections follow the order of the checkpoint.</p>
+<ol>
+<li><a href="#01-introduction">Introduction</a>. A managed portfolio with three blocks, and a fund of ETFs for growth.</li>
+<li><a href="#02-literature">Literature review</a>. Who has studied portfolios of ETFs, and whether an optimized mix beat a simple one.</li>
+<li><a href="#03-methods">Methods</a>. The three blocks, the growth fund, the screen, the optimizer and rebalancing.
+   - <a href="#the-managed-portfolio">The managed portfolio</a>
+   - <a href="#the-growth-fund">The growth fund</a>
+   - <a href="#the-screen-an-etf-must-pass">The screen an ETF must pass</a>
+   - <a href="#the-objective-of-the-optimizer">The objective of the optimizer</a>
+   - <a href="#how-financial-engineering-does-the-work">How financial engineering does the work</a>
+   - <a href="#rebalancing">Rebalancing</a>
+   - <a href="#what-this-is-in-the-language-of-the-assignment">What this is, in the language of the assignment</a></li>
+<li><a href="#04-results">Results</a>. What the reading confirmed, and what it changed in the design.</li>
+<li><a href="#05-conclusions">Conclusions</a>. New in its combination, rational in its parts.</li>
+<li><a href="#06-next-steps">Next steps</a>. The path to Checkpoint B, and the first list of ETFs.
+   - <a href="#research-universe">Research universe</a>
+   - <a href="#united-states-listed-in-the-united-states">United States</a>
+   - <a href="#world-irish-ucits">World, Irish UCITS</a>
+   - <a href="#brazil-listed-on-b3">Brazil</a></li>
+</ol>
+<h2 id="terms-used-in-this-report">Terms used in this report</h2>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Managed portfolio</td>
+<td>The whole proposal: three blocks managed by one set of rules.</td>
+</tr>
+<tr>
+<td>Block</td>
+<td>One of the three parts: safety, inflation, growth. Each block has one job.</td>
+</tr>
+<tr>
+<td>Growth fund</td>
+<td>The growth block. An actively managed fund of ETFs, and the fund this course builds.</td>
+</tr>
+<tr>
+<td>ETF</td>
+<td>An exchange-traded fund that the growth fund may hold.</td>
+</tr>
+<tr>
+<td>Wrapper</td>
+<td>Where and how the same market is listed: in the United States, as an Irish UCITS ETF, or on B3.</td>
+</tr>
+<tr>
+<td>Screen</td>
+<td>The tests an ETF must pass before it can receive a weight.</td>
+</tr>
+<tr>
+<td>Optimizer</td>
+<td>The rule that sets the weights inside the growth fund.</td>
+</tr>
+<tr>
+<td>Benchmarks</td>
+<td>Equal weight on the same ETFs, and one world ETF held alone.</td>
+</tr>
+<tr>
+<td>New money</td>
+<td>Cash coming into the portfolio. It is used first to rebalance.</td>
+</tr>
+</tbody>
+</table></section>
+<section id="01-introduction" class="part"><h1 id="introduction">Introduction</h1>
+<p>My aim is to grow wealth over many years and still be able to leave it alone when markets fall. I do not treat the money as one pile with one appetite for risk. I treat it as a <strong>managed portfolio</strong> with three blocks, and each block has one job.</p>
+<table>
+<thead>
+<tr>
+<th>Block</th>
+<th>Job</th>
+<th>What it holds</th>
+<th>Currency</th>
+<th>Size</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Safety</td>
+<td>Pay ordinary life without forced sales</td>
+<td>Cash and short-term bonds</td>
+<td>Reais</td>
+<td>Twelve months of spending</td>
+</tr>
+<tr>
+<td>Inflation</td>
+<td>Fund spending that already has a date</td>
+<td>NTN-B (Tesouro IPCA+), with maturities matched to those dates</td>
+<td>Reais</td>
+<td>Up to about 60 percent</td>
+</tr>
+<tr>
+<td>Growth</td>
+<td>Grow wealth over the long run</td>
+<td>A fund of ETFs</td>
+<td>The currency of each ETF</td>
+<td>25 to 40 percent</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Safety.</strong> Twelve months of spending sit in cash and short-term bonds that can be reached in a few days. The return is not the point. This block turns a bad year in the market into a number on a screen, instead of a sale I am forced to make.</p>
+<p><strong>Inflation.</strong> Some future spending already has a date: retirement income, or a bill I can already name. A bond that pays a fixed amount can lose to rising prices. NTN-B pays inflation plus a real rate, in reais, and its maturity can match the date of the expense. The block is capped so that protecting the long run does not consume the portfolio.</p>
+<p><strong>Growth.</strong> This is money I can allow to fall, because no dated bill depends on it. It is equity, so it carries the most risk and the most expected return. It is also the block this course builds.</p>
+<p>The first two blocks live in reais, the currency I spend. They keep spending and savings in the same currency. The growth block is different: it holds ETFs in their own currencies, and the mix of currencies is part of its diversification.</p>
+<h2 id="the-growth-block-is-a-fund-of-etfs">The growth block is a fund of ETFs</h2>
+<p>The growth block is an actively managed <strong>fund of ETFs</strong>. It is not tied to an index. A rule decides which ETFs it holds and what weight each one gets. The research question of this project is that rule: which ETFs earn a place, in what weight, so that the growth block compounds without breaking the first two blocks.</p>
+<p>I do not pick companies. S&amp;P Dow Jones Indices, in the SPIVA U.S. Scorecard for year-end 2024, found that about 84 percent of active large-cap funds trailed the S&amp;P 500 over ten years, and more than 90 percent over fifteen. An ETF already gives a diversified basket at a low cost. The open decision is which ETFs, and in what weight.</p>
+<h2 id="why-this-is-worth-studying">Why this is worth studying</h2>
+<p>The three blocks are already chosen. The weights inside the growth block are not. The users are investors like me: people who spend in reais, keep a safety cushion and dated goals, and want the rest of their wealth to grow worldwide without picking stocks. I am the first. The application is the program that runs the rule for each of them.</p></section>
+<section id="02-literature" class="part"><h1 id="literature-review">Literature review</h1>
+<blockquote>
+<p><strong>AI-generated.</strong> This review was prepared with AI research agents and edited by me. A source is cited only if its page or video was opened. The full notes are in two annexes: <a href="#annex-literature-review">academic and practitioner sources</a> and <a href="#annex-literature-review-02">lectures and talks</a>.</p>
+</blockquote>
+<p>The question is narrow. Who has studied a portfolio made of ETFs? And when someone held those ETFs in an optimized proportion, did the mix beat a simple alternative on data the rule had not seen? Trading rules such as trend following and technical analysis were outside this search, because the growth fund does not time markets.</p>
+<h2 id="the-short-answer">The short answer</h2>
+<ul>
+<li><strong>Holding ETFs instead of picking companies is well supported.</strong></li>
+<li><strong>Optimizing the weights is not.</strong> An optimizer fed with past average returns rarely beats equal weight out of sample.</li>
+<li><strong>Portfolios of ETFs exist, but this three-block design does not.</strong></li>
+</ul>
+<h2 id="optimized-weights-against-equal-weight">Optimized weights against equal weight</h2>
+<p>This is the core of the project, and the sources disagree.</p>
+<table>
+<thead>
+<tr>
+<th>Side</th>
+<th>Who</th>
+<th>What they found</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Equal weight is hard to beat</td>
+<td>DeMiguel, Garlappi and Uppal (2009)</td>
+<td>None of 14 optimizers beat equal weight consistently, across 7 datasets. Errors in the estimated returns swamp the gains.</td>
+</tr>
+<tr>
+<td>Optimization can win</td>
+<td>Kritzman, Page and Turkington (2010)</td>
+<td>With long samples, simple return assumptions, or minimum variance, optimized portfolios beat equal weight out of sample.</td>
+</tr>
+<tr>
+<td>Optimization can win</td>
+<td>Kirby and Ostdiek (2012)</td>
+<td>Low-turnover strategies beat equal weight even after high costs.</td>
+</tr>
+<tr>
+<td>Risk is the useful input</td>
+<td>Jagannathan and Ma (2003); Ledoit and Wolf (2003)</td>
+<td>A long-only constraint, or shrinking the covariance matrix, makes the optimizer more stable.</td>
+</tr>
+<tr>
+<td>Cluster methods</td>
+<td>López de Prado (2016; talk, 2024)</td>
+<td>Hierarchical risk parity and related methods cut estimation error sharply in Monte Carlo simulations. A small real-data test shown on YouTube (Finance Research Gate 2026) found minimum variance doing better.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Where the sources agree.</strong> The weak input is the expected return, not the optimizer.</p>
+<p><strong>Where they disagree.</strong> How much a careful optimizer can recover.</p>
+<p>Practitioners say the same thing more plainly. The PyPortfolioOpt documentation warns that poor return estimates can do more harm than good. Betterment, which runs portfolios of ETFs for retail clients, does not optimize on past averages. It starts from the world market portfolio and keeps weights close to a world benchmark.</p>
+<p><strong>The gap.</strong> None of these studies tests a universe of ETFs against one world ETF, after fees. That is the comparison this project makes.</p>
+<h2 id="who-has-built-a-portfolio-of-etfs">Who has built a portfolio of ETFs</h2>
+<table>
+<thead>
+<tr>
+<th>Who</th>
+<th>What it is</th>
+<th>How close to this design</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>iShares LifePath ETFs (BlackRock)</td>
+<td>An active ETF that holds only iShares ETFs, with no fee on top of theirs</td>
+<td>Closest in structure. But the weights follow a date, not an optimizer, and there is no safety or inflation block</td>
+</tr>
+<tr>
+<td>Betterment</td>
+<td>A portfolio of ETFs per client, with a market-anchored optimizer</td>
+<td>Close in method. Built for a US investor</td>
+</tr>
+<tr>
+<td>Robo-advisors (D'Acunto, Prabhala and Rossi 2019)</td>
+<td>Automated portfolios for retail clients</td>
+<td>Poorly diversified investors gained. Diversified ones traded more without gaining</td>
+</tr>
+<tr>
+<td>Goal-based investing (Das, Markowitz, Scheid and Statman 2010)</td>
+<td>Separate accounts, each with its own goal and risk limit</td>
+<td>The closest idea in theory: splitting wealth into jobs can still be efficient</td>
+</tr>
+<tr>
+<td>F-Squared (SEC case, 2014)</td>
+<td>Tactical ETF portfolios sold to advisers</td>
+<td>A warning. The track record was a backtest, and the firm paid USD 35 million to settle</td>
+</tr>
+</tbody>
+</table>
+<p>Three warnings apply to any portfolio of ETFs:</p>
+<ul>
+<li><strong>Fees.</strong> A fund of funds can stack two layers of fees (Brown, Goetzmann and Liang 2002).</li>
+<li><strong>Behavior.</strong> Investors lost by timing trades and buying narrow ETFs. Broad, cheap ETFs hurt no one (Bhattacharya, Loos, Meyer and Hackethal 2017).</li>
+<li><strong>Wrapper.</strong> An Irish UCITS ETF usually pays 15 percent US withholding on dividends, against 30 percent for a US-listed ETF (Huang 2026).</li>
+</ul>
+<h2 id="what-else-the-literature-supports">What else the literature supports</h2>
+<table>
+<thead>
+<tr>
+<th>Theme</th>
+<th>Finding</th>
+<th>Sources</th>
+<th>Meaning for this portfolio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Stock picking</td>
+<td>84 to 91 percent of active equity funds trail their index over ten years, in the United States and in Brazil</td>
+<td>SPIVA scorecards; Fama and French (2010); Bessembinder (2018)</td>
+<td>Hold index ETFs, not companies</td>
+</tr>
+<tr>
+<td>Factor ETFs</td>
+<td>Backtests overstate returns. Smart-beta indexes beat the market by 2.77 percent a year before listing and trailed it by 0.44 percent after</td>
+<td>Huang, Song and Xiang (2020); Hou, Xue and Zhang (2020); Novy-Marx and Velikov (2016)</td>
+<td>Judge factor ETFs on their live record only</td>
+</tr>
+<tr>
+<td>Inflation</td>
+<td>For a long-horizon investor, a bond that pays inflation plus a real rate is the safe asset</td>
+<td>Campbell and Viceira (2001); Kothari and Shanken (2004)</td>
+<td>NTN-B matched to dated spending</td>
+</tr>
+<tr>
+<td>Currency</td>
+<td>The dollar tends to rise when world stocks fall</td>
+<td>Campbell, Serfaty-de Medeiros and Viceira (2010)</td>
+<td>Foreign equities unhedged for someone who spends in reais. Not yet tested on the real</td>
+</tr>
+<tr>
+<td>Rebalancing</td>
+<td>Rebalancing controls risk. It does not reliably add return, and the date chosen changes results</td>
+<td>Jaconetti, Kinniry and Zilbering (2010); Hoffstein (2013)</td>
+<td>Monthly check, bands, new money first, several start dates</td>
+</tr>
+</tbody>
+</table>
+<h2 id="what-the-literature-does-not-answer">What the literature does not answer</h2>
+<ul>
+<li>Whether an optimized portfolio of ETFs beats equal weight and one world ETF, after fees, out of sample.</li>
+<li>How the real behaves against world equities, from a Brazilian investor's point of view.</li>
+<li>How the Brazilian tax law for offshore investments (Law 14.754/2023) applies. The text was not verified.</li>
+</ul>
+<h2 id="references">References</h2>
+<ul>
+<li>Bessembinder, H. (2018). Do stocks outperform Treasury bills? <em>Journal of Financial Economics</em>. <a href="https://news.wpcarey.asu.edu/20180917-do-stocks-outperform-treasury-bills">Summary</a></li>
+<li>Betterment (2026). Betterment portfolio strategy. <a href="https://www.betterment.com/resources/betterment-portfolio-strategy">Link</a></li>
+<li>Bhattacharya, U., Loos, B., Meyer, S. and Hackethal, A. (2017). Abusing ETFs. <em>Review of Finance</em> 21(3). <a href="https://ideas.repec.org/a/oup/revfin/v21y2017i3p1217-1250..html">Link</a></li>
+<li>BlackRock (2026). iShares LifePath Target Date 2035 ETF, fact sheet. <a href="https://www.ishares.com/us/literature/fact-sheet/itdc-ishares-lifepath-target-date-2035-etf-fund-fact-sheet-en-us.pdf">Link</a></li>
+<li>Brown, S. J., Goetzmann, W. N. and Liang, B. (2002). Fees on fees in funds of funds. NYU Stern working paper. <a href="https://archive.nyu.edu/handle/2451/26475">Link</a></li>
+<li>Campbell, J. Y., Serfaty-de Medeiros, K. and Viceira, L. M. (2010). Global currency hedging. <em>Journal of Finance</em> 65(1). <a href="https://www.nber.org/papers/w13088">Link</a></li>
+<li>Campbell, J. Y. and Viceira, L. M. (2001). Who should buy long-term bonds? <em>American Economic Review</em> 91(1). <a href="https://www.aeaweb.org/articles?id=10.1257/aer.91.1.99">Link</a></li>
+<li>D'Acunto, F., Prabhala, N. and Rossi, A. G. (2019). The promises and pitfalls of robo-advising. <em>Review of Financial Studies</em> 32(5). <a href="https://www.ifo.de/en/cesifo/publications/2018/working-paper/promises-and-pitfalls-robo-advising">Link</a></li>
+<li>Das, S., Markowitz, H., Scheid, J. and Statman, M. (2010). Portfolio optimization with mental accounts. <em>Journal of Financial and Quantitative Analysis</em> 45(2). <a href="https://ideas.repec.org/a/cup/jfinqa/v45y2010i02p311-334_00.html">Link</a></li>
+<li>DeMiguel, V., Garlappi, L. and Uppal, R. (2009). Optimal versus naive diversification. <em>Review of Financial Studies</em> 22(5). <a href="https://academic.oup.com/rfs/article-abstract/22/5/1915/1592901">Link</a></li>
+<li>Fama, E. F. and French, K. R. (2010). Luck versus skill in the cross-section of mutual fund returns. <em>Journal of Finance</em> 65(5). <a href="https://ideas.repec.org/a/bla/jfinan/v65y2010i5p1915-1947.html">Link</a></li>
+<li>Finance Research Gate (2026). Hierarchical risk parity HRP portfolio optimization. YouTube. <a href="https://www.youtube.com/watch?v=_OPDNwtubZg">Link</a></li>
+<li>Hoffstein, C. (2013). The luck of the rebalance timing. Newfound Research. <a href="https://blog.thinknewfound.com/2013/08/the-luck-of-the-rebalance-timing/">Link</a></li>
+<li>Hou, K., Xue, C. and Zhang, L. (2020). Replicating anomalies. <em>Review of Financial Studies</em> 33(5). <a href="https://ideas.repec.org/a/oup/rfinst/v33y2020i5p2019-2133..html">Link</a></li>
+<li>Huang, D. (2026). Considerations for non-US investors: US ETFs vs Irish UCITS. State Street Investment Management. <a href="https://www.ssga.com/us/en/institutional/insights/considerations-for-non-us-investors-us-etfs-vs-irish-ucits">Link</a></li>
+<li>Huang, S., Song, Y. and Xiang, H. (2020). The smart beta mirage. SSRN working paper. <a href="https://www.investmentnews.com/smart-beta-funds-dont-live-up-backtesting-196778">Summary</a></li>
+<li>Jaconetti, C. M., Kinniry, F. M. and Zilbering, Y. (2010). Best practices for portfolio rebalancing. Vanguard Research. <a href="https://indexacapital.com/bundles/unaiadvisor/docs/papers/2010-Vanguard-Best-practices-for-portfolio-rebalancing.pdf?v=241">Link</a></li>
+<li>Jagannathan, R. and Ma, T. (2003). Risk reduction in large portfolios. <em>Journal of Finance</em> 58(4). <a href="https://nber.org/papers/w8922">Link</a></li>
+<li>Kirby, C. and Ostdiek, B. (2012). It's all in the timing. <em>Journal of Financial and Quantitative Analysis</em> 47(2). <a href="https://ideas.repec.org/a/cup/jfinqa/v47y2012i02p437-467_00.html">Link</a></li>
+<li>Kothari, S. P. and Shanken, J. (2004). Asset allocation with inflation-protected bonds. <em>Financial Analysts Journal</em> 60(1). <a href="https://rpc.cfainstitute.org/research/financial-analysts-journal/2004/asset-allocation-with-inflation-protected-bonds">Link</a></li>
+<li>Kritzman, M., Page, S. and Turkington, D. (2010). In defense of optimization: The fallacy of 1/N. <em>Financial Analysts Journal</em> 66(2). <a href="https://ideas.repec.org/a/taf/ufajxx/v66y2010i2p31-39.html">Link</a></li>
+<li>Ledoit, O. and Wolf, M. (2003). Honey, I shrunk the sample covariance matrix. UPF working paper 691. <a href="https://ideas.repec.org/p/upf/upfgen/691.html">Link</a></li>
+<li>López de Prado, M. (2016). Building diversified portfolios that outperform out of sample. <em>Journal of Portfolio Management</em> 42(4). Full text not opened.</li>
+<li>López de Prado, M. (2024). Machine learning in asset management. Kapitaleierdagen 2024, Reitan Kapital. YouTube. <a href="https://www.youtube.com/watch?v=fOCzNFwmM7Y">Link</a></li>
+<li>Novy-Marx, R. and Velikov, M. (2016). A taxonomy of anomalies and their trading costs. <em>Review of Financial Studies</em> 29(1). <a href="https://ideas.repec.org/a/oup/rfinst/v29y2016i1p104-147..html">Link</a></li>
+<li>PyPortfolioOpt documentation. Expected returns. <a href="https://pyportfolioopt.readthedocs.io/en/latest/ExpectedReturns.html">Link</a></li>
+<li>Schlegel, J. (2014). F-Squared slammed by SEC over false performance claims. <em>Financial Advisor</em>. <a href="https://www.fa-mag.com/news/f-squared-slammed-by-sec-over-false-performance-claims-20256.html">Link</a></li>
+<li>S&amp;P Dow Jones Indices. SPIVA U.S. and Latin America scorecards, via <a href="https://icfs.com/specialists-desk/spiva-scorecard-results">ICFS</a> and <a href="https://borainvestir.b3.com.br/tipos-de-investimentos/renda-variavel/fundos-investimento/gestao-ativa-enfrenta-desafio-persistente-para-superar-o-mercado/">B3 Bora Investir</a>.</li>
+</ul></section>
+<section id="03-methods" class="part"><h1 id="methods">Methods</h1>
+<ul>
+<li><a href="#the-managed-portfolio">The managed portfolio</a></li>
+<li><a href="#the-growth-fund">The growth fund</a></li>
+<li><a href="#the-screen-an-etf-must-pass">The screen an ETF must pass</a></li>
+<li><a href="#the-objective-of-the-optimizer">The objective of the optimizer</a></li>
+<li><a href="#how-financial-engineering-does-the-work">How financial engineering does the work</a></li>
+<li><a href="#rebalancing">Rebalancing</a></li>
+<li><a href="#what-this-is-in-the-language-of-the-assignment">What this is, in the language of the assignment</a></li>
+</ul>
+<p>This section says what the portfolio will do. It does not test it yet.</p>
+<h2 id="the-managed-portfolio">The managed portfolio</h2>
+<p>A program may change weights. It may not change the jobs.</p>
+<ul>
+<li><strong>Safety.</strong> Twelve months of spending in cash and short-term bonds, in reais. If the block is short, it is filled first.</li>
+<li><strong>Inflation.</strong> NTN-B matched to dated spending, capped at about 60 percent of the portfolio. Fixed ladder: about 20 percent short, 35 percent intermediate, 45 percent long.</li>
+<li><strong>Growth.</strong> Between 25 and 40 percent of the portfolio, in the growth fund. This is where the research happens.</li>
+</ul>
+<h2 id="the-growth-fund">The growth fund</h2>
+<p><strong>What it holds.</strong> Every equity ETF the investor can buy: listed in the United States, as Irish UCITS, or on B3. Leveraged and inverse ETFs are excluded. The 61 ETFs in <a href="#research-universe">the research universe</a> are only the first sample.</p>
+<p><strong>Exposure and wrapper.</strong> The same market is often sold in several ETFs, for example the S&amp;P 500 as a US-listed, an Irish UCITS and a B3 ETF. That choice is the <strong>wrapper</strong>. The fund decides in two steps:</p>
+<ol>
+<li><strong>Exposure:</strong> which market, and how much.</li>
+<li><strong>Wrapper:</strong> which ETF delivers that market, by cost, domicile, dividend treatment and tax.</li>
+</ol>
+<p><strong>Currency.</strong> Each ETF is held in its own currency, unhedged, as part of the diversification. Results are measured in dollars, so the choice of ETFs is judged apart from the real. The conversion to reais is a separate line.</p>
+<p><strong>Limits.</strong> Caps per ETF, country and currency, set in Checkpoint B.</p>
+<h2 id="the-screen-an-etf-must-pass">The screen an ETF must pass</h2>
+<p>Every candidate goes through the same tests:</p>
+<ul>
+<li>a minimum history of monthly returns, needed for the backtest and the Monte Carlo simulation (proposed: five years);</li>
+<li>return, volatility, and the depth of the worst fall;</li>
+<li>correlation with the other candidates;</li>
+<li>what is left after fees;</li>
+<li>whether the result still holds on a period the rule did not see.</li>
+</ul>
+<p>An ETF that fails gets no weight. A young ETF, such as AUVP11 or VWRA11, is recorded but not weighted.</p>
+<h2 id="the-objective-of-the-optimizer">The objective of the optimizer</h2>
+<p>The optimizer runs only inside the growth fund, and only on ETFs the screen approved.</p>
+<ul>
+<li><strong>Objective.</strong> The highest return per unit of risk, after fees.</li>
+<li><strong>Constraints.</strong> Long only and fully invested: no borrowing, no short sales. Caps per ETF, country and currency.</li>
+<li><strong>Inputs.</strong> Expected returns anchored to the world market portfolio, a shrunk covariance matrix, and minimum variance as a check.</li>
+</ul>
+<p>Two benchmarks keep it honest:</p>
+<ol>
+<li>Equal weight on the same approved ETFs, on the same dates.</li>
+<li>One world ETF, held alone.</li>
+</ol>
+<p>The optimizer wins only if its Sharpe ratio beats both benchmarks by at least 0.1, after fees, on data it has not seen. Otherwise the simple option wins, and that is the finding. The optimizer never takes money from the safety or inflation blocks.</p>
+<h2 id="how-financial-engineering-does-the-work">How financial engineering does the work</h2>
+<p>The course's toolkit answers the two questions of the growth fund: which ETFs, and in what weight. Each step of the rule maps to a method.</p>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Question</th>
+<th>Method</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Describe</td>
+<td>Is this ETF worth a place?</td>
+<td>Return, volatility, worst fall, and Sharpe ratio after fees</td>
+<td>Sharpe (1994)</td>
+</tr>
+<tr>
+<td>2. Look through</td>
+<td>Is it a new market or a copy?</td>
+<td>Correlation matrix and hierarchical clustering. A regression on market, size, value and momentum factors shows what the ETF really holds</td>
+<td>Sharpe (1963); Fama and French (1993); López de Prado (2016)</td>
+</tr>
+<tr>
+<td>3. Weight</td>
+<td>How much of each ETF?</td>
+<td>Mean-variance optimization at the highest Sharpe ratio, long only, with caps</td>
+<td>Markowitz (1952)</td>
+</tr>
+<tr>
+<td>4. Feed</td>
+<td>What returns should the optimizer expect?</td>
+<td>Equilibrium returns implied by the world market portfolio, and a shrunk covariance matrix</td>
+<td>Black and Litterman (1991); Ledoit and Wolf (2003); Grinold and Kahn (2000)</td>
+</tr>
+<tr>
+<td>5. Cross-check</td>
+<td>Are the weights stable?</td>
+<td>Minimum variance and hierarchical risk parity, run beside the optimizer</td>
+<td>López de Prado (2016); Hudson and Thames (2020)</td>
+</tr>
+<tr>
+<td>6. Test</td>
+<td>Would it have worked?</td>
+<td>Walk-forward backtest with costs, and a Monte Carlo bootstrap of monthly returns. A deflated Sharpe ratio corrects for the number of variants tried</td>
+<td>Bailey and López de Prado (2014)</td>
+</tr>
+<tr>
+<td>7. Maintain</td>
+<td>How does it stay near the rule?</td>
+<td>Monthly bands, written as code, so the fund runs without discretion</td>
+<td>Assignment: automated, rule-based trading</td>
+</tr>
+</tbody>
+</table>
+<p>Steps 1 and 2 choose the ETFs. Steps 3 to 6 set and test the weights. Step 7 keeps them.</p>
+<h2 id="rebalancing">Rebalancing</h2>
+<p>The same rule applies to the three blocks and to the ETFs inside the growth fund. Each target has a band a few percentage points wide.</p>
+<ol>
+<li>Once a month the program measures. Inside the band, it does nothing.</li>
+<li>Outside the band, new money goes first to whatever is most behind.</li>
+<li>Only if new money is not enough does it sell, and only back to the edge of the band, because a sale has a cost and a tax.</li>
+</ol>
+<p>The promise is that the mix stays near the rule, not that rebalancing adds return.</p>
+<h2 id="what-this-is-in-the-language-of-the-assignment">What this is, in the language of the assignment</h2>
+<ul>
+<li><strong>The fund.</strong> The growth fund: an actively managed fund of ETFs, inside a managed portfolio.</li>
+<li><strong>Method.</strong> Systematic portfolio selection and optimization, in the line of Markowitz and Sharpe.</li>
+<li><strong>Analysis.</strong> Rule-based, not fundamental stock picking. After an ETF is admitted, the program sees only returns, risk, fees and correlations.</li>
+<li><strong>Trading.</strong> Closer to buy-and-hold than to daily trading. Holdings change when a band breaks. The fund is long only. The rule aims for turnover below 20 percent a year in the growth fund. Checkpoint B measures the real figure.</li>
+<li><strong>Not used.</strong> Technical analysis and trend following are not part of the rule. The growth fund holds broad markets for the long run. The safety block, not a timed exit, absorbs a falling market. Trend following can be tested later as a variant.</li>
+<li><strong>Open question.</strong> A hedge with index options is not in the rule. One option chain I looked at had spreads too wide to serve as that hedge.</li>
+<li><strong>Cash.</strong> The cash share is the safety block, twelve months of spending.</li>
+</ul>
+<p>Checkpoint B specifies the data, the dates and the tests. This checkpoint stops at the rule.</p>
+<h2 id="references-for-this-section">References for this section</h2>
+<ul>
+<li>Bailey, D. H. and López de Prado, M. (2014). The deflated Sharpe ratio: Correcting for selection bias, backtest overfitting and non-normality. <em>Journal of Portfolio Management</em> 40(5).</li>
+<li>Black, F. and Litterman, R. (1991). Asset allocation: Combining investor views with market equilibrium. <em>Journal of Fixed Income</em> 1(2): 7-18.</li>
+<li>Fama, E. F. and French, K. R. (1993). Common risk factors in the returns on stocks and bonds. <em>Journal of Financial Economics</em> 33(1).</li>
+<li>Grinold, R. C. and Kahn, R. N. (2000). <em>Active Portfolio Management: A Quantitative Approach for Producing Superior Returns and Controlling Risk</em>, 2nd ed. New York: McGraw Hill.</li>
+<li>Hudson and Thames (2020). <em>Guide to Modern Portfolio Optimization</em>. GitHub. <a href="https://github.com/hudson-and-thames/guide_to_modern_portfolio_optimization/blob/main/Guide%20to%20Modern%20Portfolio%20Optimization.pdf">Link</a></li>
+<li>López de Prado, M. (2016). Building diversified portfolios that outperform out of sample. <em>Journal of Portfolio Management</em> 42(4).</li>
+<li>Markowitz, H. (1952). Portfolio selection. <em>Journal of Finance</em> 7(1): 77-91.</li>
+<li>Sharpe, W. F. (1963). A simplified model for portfolio analysis. <em>Management Science</em> 9: 277-293.</li>
+<li>Sharpe, W. F. (1994). The Sharpe ratio. <em>Journal of Portfolio Management</em> 21: 49-58.</li>
+</ul></section>
+<section id="04-results" class="part"><h1 id="results">Results</h1>
+<p>Checkpoint A asks for conceptual results, not a performance number. Nothing has been tested yet.</p>
+<h2 id="the-main-finding">The main finding</h2>
+<p><strong>An optimizer fed with past average returns rarely beats equal weight on data it has not seen.</strong> Expected returns are hard to estimate. Small errors in them become extreme weights, and those errors eat the gain from optimizing.</p>
+<p>Optimizers do better when they lean on risk instead of return, use limits, and trade little. Even so, none wins every time. And no study I found tests a universe of ETFs against one world ETF, after fees.</p>
+<p>So the most likely outcome of this project is a tie. That is still an answer: it would mean equal weight, or one world ETF, is enough. For the optimizer to count as the winner, it must beat both benchmarks by at least 0.1 in Sharpe ratio, after fees, on data it has not seen. Anything smaller is treated as noise.</p>
+<h2 id="what-the-reading-confirmed">What the reading confirmed</h2>
+<table>
+<thead>
+<tr>
+<th>Decision</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hold ETFs, not companies</td>
+<td>Supported</td>
+</tr>
+<tr>
+<td>Inflation block in NTN-B, matched to dated spending</td>
+<td>Supported</td>
+</tr>
+<tr>
+<td>Safety and inflation in reais, the currency of spending</td>
+<td>Supported</td>
+</tr>
+<tr>
+<td>Foreign equities unhedged</td>
+<td>Supported by theory, not yet tested on the real</td>
+</tr>
+<tr>
+<td>Monthly check, bands, new money first</td>
+<td>Supported. Rebalancing controls risk; it does not add return</td>
+</tr>
+</tbody>
+</table>
+<h2 id="what-the-reading-changed-in-the-design">What the reading changed in the design</h2>
+<ol>
+<li><strong>Anchored inputs.</strong> Expected returns come from the world market portfolio, not from each ETF's past average. The covariance matrix is shrunk. Minimum variance runs beside the optimizer as a check.</li>
+<li><strong>Exposure before wrapper.</strong> In the first list of 61 ETFs, seven follow the S&amp;P 500 and six follow a world index. The fund first chooses the market, then the cheapest and most tax-efficient ETF for it. Otherwise the optimizer would treat copies as diversification.</li>
+<li><strong>Minimum history.</strong> Young ETFs, such as AUVP11 and VWRA11, are recorded but not weighted. Factor ETFs are judged on their live record, not their backtest.</li>
+<li><strong>Fixed inflation block.</strong> No study supports moving NTN-B with the real yield. A fixed ladder keeps the focus on the growth fund.</li>
+</ol></section>
+<section id="05-conclusions" class="part"><h1 id="conclusions">Conclusions</h1>
+<ul>
+<li><strong>The idea is new in its combination, not in its parts.</strong> Portfolios of ETFs, goal-based investing and inflation-linked bonds are all well studied. No published design I found combines them for an investor who spends in reais.</li>
+<li><strong>It makes rational sense.</strong> Two blocks protect spending in reais. The third block grows wealth worldwide, with the most risk and the most expected return.</li>
+<li><strong>It applies the course end to end.</strong> Factor regression and clustering choose the ETFs. Mean-variance optimization with equilibrium inputs sets the weights. Backtests, Monte Carlo and a deflated Sharpe ratio test them.</li>
+<li><strong>The gap is real.</strong> Almost no one has tested an optimized portfolio of ETFs against one world ETF, after fees. This project fills that gap.</li>
+<li><strong>The main risk is a tie.</strong> The literature suggests the optimizer may not beat equal weight or one world ETF by the 0.1 Sharpe margin. If it does not, the simple option wins, and that is a valid result.</li>
+</ul>
+<p>The open items are short histories, the caps per country and currency, and the Brazilian tax rules. The path to Checkpoint B is in <a href="#06-next-steps">Next steps</a>.</p></section>
+<section id="06-next-steps" class="part"><h1 id="next-steps">Next steps</h1>
+<p>Toward Checkpoint B:</p>
+<ol>
+<li><strong>Widen the universe.</strong> Build the list of every equity ETF available in the United States, as Irish UCITS and on B3. Leave out leveraged and inverse ETFs.</li>
+<li><strong>Collect the data.</strong> Download monthly returns, fees, currency and start date for each ETF.</li>
+<li><strong>Set the limits.</strong> Fix the minimum history (proposed: five years) and the caps per ETF, country and currency.</li>
+<li><strong>Group by exposure.</strong> Pick one wrapper per exposure.</li>
+<li><strong>Build the comparisons.</strong> Build the anchored optimizer, equal weight and one world ETF, with minimum variance as a check.</li>
+<li><strong>Test.</strong> Run the backtest and the Monte Carlo simulation on data the rule did not see, after fees, with the monthly check and the bands, measured in dollars and converted to reais. Correct the Sharpe ratio for the number of variants tried.</li>
+<li><strong>Verify the open sources.</strong> Check the Brazilian tax rules against the text of the law.</li>
+</ol>
+<h2 id="research-universe">Research universe</h2>
+<ul>
+<li><a href="#united-states-listed-in-the-united-states">United States, listed in the United States</a></li>
+<li><a href="#world-irish-ucits">World, Irish UCITS</a></li>
+<li><a href="#brazil-listed-on-b3">Brazil, listed on B3</a></li>
+</ul>
+<p>These 61 equity ETFs are the first list read in this checkpoint. They are a sample of the full universe, not the positions the fund intends to hold. The same market appears more than once when the wrapper changes.</p>
+<p>AUVP11 and VWRA11 have traded only since September 2025, and AVWS since September 2024. They stay on the list to show what the minimum-history rule will exclude.</p>
+<h3 id="united-states-listed-in-the-united-states">United States, listed in the United States</h3>
+<p>VT is the US-listed world ETF. It holds large, mid-size, and small companies. VWRA, in the Irish section, holds the large and mid-size companies of the same idea.</p>
+<table>
+<thead>
+<tr>
+<th>Ticker</th>
+<th>Role</th>
+<th>What it is</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VOO</td>
+<td>Broad market</td>
+<td>Vanguard S&amp;P 500</td>
+</tr>
+<tr>
+<td>IVV</td>
+<td>Broad market</td>
+<td>iShares Core S&amp;P 500</td>
+</tr>
+<tr>
+<td>SPY</td>
+<td>Broad market</td>
+<td>SPDR S&amp;P 500</td>
+</tr>
+<tr>
+<td>VTI</td>
+<td>Broad market</td>
+<td>Vanguard Total Stock Market</td>
+</tr>
+<tr>
+<td>ITOT</td>
+<td>Broad market</td>
+<td>iShares Core S&amp;P Total U.S. Stock Market</td>
+</tr>
+<tr>
+<td>VT</td>
+<td>Broad market</td>
+<td>Vanguard Total World, FTSE Global All Cap</td>
+</tr>
+<tr>
+<td>QQQ</td>
+<td>Broad market</td>
+<td>Invesco QQQ, Nasdaq-100</td>
+</tr>
+<tr>
+<td>VUG</td>
+<td>Broad market</td>
+<td>Vanguard Growth</td>
+</tr>
+<tr>
+<td>VTV</td>
+<td>Broad market</td>
+<td>Vanguard Value</td>
+</tr>
+<tr>
+<td>VB</td>
+<td>Broad market</td>
+<td>Vanguard Small-Cap</td>
+</tr>
+<tr>
+<td>VYM</td>
+<td>Dividend</td>
+<td>Vanguard High Dividend Yield</td>
+</tr>
+<tr>
+<td>SCHD</td>
+<td>Dividend</td>
+<td>Schwab U.S. Dividend Equity</td>
+</tr>
+<tr>
+<td>VIG</td>
+<td>Dividend</td>
+<td>Vanguard Dividend Appreciation</td>
+</tr>
+<tr>
+<td>DGRO</td>
+<td>Dividend</td>
+<td>iShares Core Dividend Growth</td>
+</tr>
+<tr>
+<td>DVY</td>
+<td>Dividend</td>
+<td>iShares Select Dividend</td>
+</tr>
+<tr>
+<td>QUAL</td>
+<td>Quality</td>
+<td>iShares MSCI USA Quality Factor</td>
+</tr>
+<tr>
+<td>SPHQ</td>
+<td>Quality</td>
+<td>Invesco S&amp;P 500 Quality</td>
+</tr>
+<tr>
+<td>JQUA</td>
+<td>Quality</td>
+<td>JPMorgan U.S. Quality Factor</td>
+</tr>
+<tr>
+<td>VOOG</td>
+<td>Growth</td>
+<td>Vanguard S&amp;P 500 Growth</td>
+</tr>
+<tr>
+<td>VXUS</td>
+<td>International</td>
+<td>Vanguard Total International Stock, world outside the US</td>
+</tr>
+<tr>
+<td>VEA</td>
+<td>International</td>
+<td>Vanguard FTSE Developed Markets</td>
+</tr>
+<tr>
+<td>VWO</td>
+<td>Emerging</td>
+<td>Vanguard FTSE Emerging Markets</td>
+</tr>
+<tr>
+<td>IEMG</td>
+<td>Emerging</td>
+<td>iShares Core MSCI Emerging Markets</td>
+</tr>
+<tr>
+<td>VBR</td>
+<td>Small-cap value</td>
+<td>Vanguard Small-Cap Value</td>
+</tr>
+<tr>
+<td>AVUV</td>
+<td>Small-cap value</td>
+<td>Avantis U.S. Small Cap Value</td>
+</tr>
+<tr>
+<td>MTUM</td>
+<td>Momentum</td>
+<td>iShares MSCI USA Momentum Factor</td>
+</tr>
+<tr>
+<td>USMV</td>
+<td>Minimum volatility</td>
+<td>iShares MSCI USA Min Vol Factor</td>
+</tr>
+</tbody>
+</table>
+<h3 id="world-irish-ucits">World, Irish UCITS</h3>
+<p>Tickers are the London lines, except ZPRV and AVWS, which are the Xetra lines. VWRA and VWRD are the accumulating and distributing share classes of the Vanguard FTSE All-World fund. VUAA and VUSA are the same pair for the Vanguard S&amp;P 500 fund. VHYA and VHYL are the same pair for the high-dividend fund.</p>
+<table>
+<thead>
+<tr>
+<th>Ticker</th>
+<th>Role</th>
+<th>What it is</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VWRA</td>
+<td>Broad market</td>
+<td>Vanguard FTSE All-World, accumulating</td>
+</tr>
+<tr>
+<td>VWRD</td>
+<td>Broad market</td>
+<td>Vanguard FTSE All-World, distributing</td>
+</tr>
+<tr>
+<td>IWDA</td>
+<td>Broad market</td>
+<td>iShares Core MSCI World, accumulating</td>
+</tr>
+<tr>
+<td>VHVE</td>
+<td>Broad market</td>
+<td>Vanguard FTSE Developed World, accumulating</td>
+</tr>
+<tr>
+<td>ISAC</td>
+<td>Broad market</td>
+<td>iShares MSCI ACWI, accumulating</td>
+</tr>
+<tr>
+<td>EIMI</td>
+<td>Broad market</td>
+<td>iShares Core MSCI Emerging Markets IMI, accumulating</td>
+</tr>
+<tr>
+<td>CSPX</td>
+<td>Broad market</td>
+<td>iShares Core S&amp;P 500, accumulating</td>
+</tr>
+<tr>
+<td>VUAA</td>
+<td>Broad market</td>
+<td>Vanguard S&amp;P 500, accumulating</td>
+</tr>
+<tr>
+<td>VUSA</td>
+<td>Broad market</td>
+<td>Vanguard S&amp;P 500, distributing</td>
+</tr>
+<tr>
+<td>CNDX</td>
+<td>Broad market</td>
+<td>iShares Nasdaq-100, accumulating</td>
+</tr>
+<tr>
+<td>IWQU</td>
+<td>Quality</td>
+<td>iShares Edge MSCI World Quality Factor, accumulating</td>
+</tr>
+<tr>
+<td>VHYL</td>
+<td>Dividend</td>
+<td>Vanguard FTSE All-World High Dividend Yield, distributing</td>
+</tr>
+<tr>
+<td>VHYA</td>
+<td>Dividend</td>
+<td>Vanguard FTSE All-World High Dividend Yield, accumulating</td>
+</tr>
+<tr>
+<td>WSML</td>
+<td>Small cap</td>
+<td>iShares MSCI World Small Cap, accumulating</td>
+</tr>
+<tr>
+<td>IWMO</td>
+<td>Momentum</td>
+<td>iShares Edge MSCI World Momentum Factor, accumulating</td>
+</tr>
+<tr>
+<td>ZPRV</td>
+<td>Small-cap value</td>
+<td>SPDR MSCI USA Small Cap Value Weighted, accumulating. Xetra line</td>
+</tr>
+<tr>
+<td>AVWS</td>
+<td>Small-cap value</td>
+<td>Avantis Global Small Cap Value, accumulating. Xetra line. History from September 2024</td>
+</tr>
+</tbody>
+</table>
+<h3 id="brazil-listed-on-b3">Brazil, listed on B3</h3>
+<p>BOVA11, BOVV11, and BBOV11 follow the Ibovespa under three sponsors. IVVB11, NASD11, WRLD11, VWRA11, and ACWI11 are foreign markets in a local wrapper, priced in reais. VWRA11 holds the same Irish fund as VWRA.</p>
+<table>
+<thead>
+<tr>
+<th>Ticker</th>
+<th>Role</th>
+<th>What it is</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BOVA11</td>
+<td>Broad market</td>
+<td>iShares Ibovespa</td>
+</tr>
+<tr>
+<td>BOVV11</td>
+<td>Broad market</td>
+<td>IT Now Ibovespa</td>
+</tr>
+<tr>
+<td>BBOV11</td>
+<td>Broad market</td>
+<td>BB Ibovespa</td>
+</tr>
+<tr>
+<td>PIBB11</td>
+<td>Broad market</td>
+<td>IT Now IBrX-50</td>
+</tr>
+<tr>
+<td>BRAX11</td>
+<td>Broad market</td>
+<td>iShares IBrX-100</td>
+</tr>
+<tr>
+<td>SMAL11</td>
+<td>Broad market</td>
+<td>Small caps, SMLL</td>
+</tr>
+<tr>
+<td>DIVO11</td>
+<td>Dividend</td>
+<td>IT Now IDIV</td>
+</tr>
+<tr>
+<td>BBSD11</td>
+<td>Dividend</td>
+<td>BB S&amp;P Dividendos Brasil</td>
+</tr>
+<tr>
+<td>AUVP11</td>
+<td>Quality</td>
+<td>Teva Ações Fundamentos. History from September 2025</td>
+</tr>
+<tr>
+<td>BEST11</td>
+<td>Quality</td>
+<td>Investo Brazil quality</td>
+</tr>
+<tr>
+<td>GOVE11</td>
+<td>Quality</td>
+<td>IGCT, corporate governance</td>
+</tr>
+<tr>
+<td>FIND11</td>
+<td>Sector</td>
+<td>IT Now financials</td>
+</tr>
+<tr>
+<td>IVVB11</td>
+<td>Foreign, in reais</td>
+<td>S&amp;P 500</td>
+</tr>
+<tr>
+<td>NASD11</td>
+<td>Foreign, in reais</td>
+<td>Nasdaq-100</td>
+</tr>
+<tr>
+<td>WRLD11</td>
+<td>Foreign, in reais</td>
+<td>IT Now MSCI World</td>
+</tr>
+<tr>
+<td>ACWI11</td>
+<td>Foreign, in reais</td>
+<td>Trend, broad global equity</td>
+</tr>
+<tr>
+<td>VWRA11</td>
+<td>Foreign, in reais</td>
+<td>Investo feeder of VWRA, FTSE All-World. History from 30 September 2025</td>
+</tr>
+</tbody>
+</table></section>
+<h1 class="annex-break" id="annexes">Annexes</h1>
+<section id="annex-literature-review" class="part annex"><h1 id="literature-review-opus-55-academic-and-practitioner-sources-on-portfolios-of-etfs">Literature review Opus 5.5: academic and practitioner sources on portfolios of ETFs</h1>
+<p>Scope: who has studied portfolios built from ETFs, and what happened when the funds were held in optimized proportions. The fund under study holds (1) about twelve months of spending in cash and short bonds, (2) capped inflation-linked government bonds matched to the liability, and (3) a growth sleeve of ETFs weighted by an optimizer (maximum return per unit of risk after fees, long only), compared against equal weight and against one broad world ETF. The investor spends in BRL.</p>
+<blockquote>
+<p><strong>AI-generated.</strong> Prepared with AI research agents (Opus 5.5) and edited by the author. A source is cited only if its page was opened. Where only a summary or a secondary page was available, the text says so.</p>
+</blockquote>
+<p>Verification rule: a source is cited only if its page (publisher, RePEc/IDEAS, NBER, institutional page, or a named secondary page) was opened. When the primary page was blocked and a secondary page was used, that is stated. Findings come mostly from abstracts and publisher summaries, not full texts; no figure below was computed by the author of this review.</p>
+<hr />
+<h2 id="1-stock-selection-against-the-index">1. Stock selection against the index</h2>
+<p><strong>Claim.</strong> After costs, most actively managed equity funds trail a broad index, and the share that trails rises with the horizon. This holds in the US and in Brazil. The academic explanation combines costs (Fama and French), persistence that is explained by factors and expenses rather than skill (Carhart), and the concentration of long-run stock returns in a small number of firms (Bessembinder).</p>
+<p><strong>Sources and how they compare</strong></p>
+<ul>
+<li><em>Scorecards (practitioner, S&amp;P Dow Jones Indices).</em> The SPIVA PDFs returned HTTP 403, so figures come from secondary pages that quote them.</li>
+<li>SPIVA U.S. Year-End 2024, as reported by ICFS: large-cap active funds vs. the S&amp;P 500 underperformed at 65.2% (1 year), 76.3% (5 years) and 84.3% (10 years). The page says that above 90% underperform over 15 years without giving the exact figure.</li>
+<li>SPIVA Latin America Mid-Year 2025, as reported by Funds Society (2025-10-29): over 10 years to 2025-06-30, 86.0% of Brazil equity funds trailed the S&amp;P Brazil BMI; 66.3% of large-cap funds and 85.3% of mid/small-cap funds trailed their benchmarks.</li>
+<li>A later SPIVA Latin America reading, as reported by B3 Bora Investir: 90.8% of Brazil equity funds trailed over 10 years. The page does not name the exact edition.</li>
+<li><em>Academic.</em></li>
+<li>Fama and French (2010): the aggregate US active fund portfolio is close to the market, and costs reach the investor as a lower return. Bootstrap tests find few funds whose returns cover their costs; before fees there is some evidence of skill in the extreme tails.</li>
+<li>Carhart (1997): common factors and expenses explain almost all performance persistence; the persistence that remains sits in the worst funds. A replication (Choi and Zhao 2021, <em>Critical Finance Review</em>, listed on the FORRT page) finds no significant persistence in 1994 to 2018.</li>
+<li>Bessembinder (2018), as reported by ASU: about 26,000 US stocks since 1926. 58% did not beat Treasury bills over their life, and 4.3% of firms generated the net wealth created. The journal page was blocked, and the ASU page has internal inconsistencies (86 vs. 90 firms; end year 2016 vs. 2017).</li>
+</ul>
+<p><strong>Agreement and disagreement.</strong> The sources agree that the average active fund loses after costs and that the losing share grows with the horizon. They disagree on skill in the tails: Fama and French find some before fees, while Carhart and its replication do not. In Brazil, large-cap funds do better than mid/small-cap funds over 10 years, though most still lose.</p>
+<p><strong>What this justifies for the three-block portfolio.</strong> It justifies building the growth sleeve from index ETFs rather than from stock pickers. It does not show that an optimizer choosing weights <em>among</em> ETFs will beat a broad index: that is a different decision, and Theme 2 covers it.</p>
+<hr />
+<h2 id="2-portfolio-optimization-against-simple-diversification">2. Portfolio optimization against simple diversification</h2>
+<p><strong>Claim.</strong> Mean-variance optimization that uses sample means usually loses to equal weight (1/N) out of sample, because errors in the estimated expected returns dominate. Optimizers that estimate the mean conservatively, rely mostly on the covariance (shrinkage or constraints), or trade little can beat 1/N. No method beats 1/N robustly and simply across datasets.</p>
+<p><strong>Sources and how they compare</strong></p>
+<ul>
+<li>Markowitz (1952) is the theoretical basis; it contains no out-of-sample test.</li>
+<li>DeMiguel, Garlappi and Uppal (2009): none of 14 models, tested on 7 datasets, consistently beats 1/N in Sharpe ratio, certainty-equivalent return, or turnover. The estimation window needed to beat 1/N would be about 3,000 months with 25 assets and about 6,000 months with 50 assets.</li>
+<li>Kritzman, Page and Turkington (2010) challenge this. Across 13 datasets, 1,028 series and more than 50,000 optimized portfolios, optimizers beat 1/N out of sample when they use long samples, simple expected-return assumptions, or minimum variance. Optimizing the covariance alone already adds value.</li>
+<li>Kirby and Ostdiek (2012) attribute the DGU result to the test design (high estimation risk and extreme turnover). Low-turnover volatility-timing and reward-to-risk-timing strategies beat 1/N even with high transaction costs.</li>
+<li>Jagannathan and Ma (2003): a no-short-sales constraint is equivalent to shrinking the covariance matrix. Constrained minimum-variance portfolios perform about as well as factor-model and shrinkage portfolios.</li>
+<li>Ledoit and Wolf (2003 working paper): shrinking the sample covariance lowers tracking error and raises the realized information ratio. The 2004 journal version was not verified on a page.</li>
+<li>Becker, Gürtler and Hibbeln (2015) test Michaud resampling: Markowitz beats Michaud on average, and the choice of estimator and constraints matters more than the optimization method. No primary Michaud source was opened.</li>
+</ul>
+<p><strong>Agreement and disagreement.</strong> All agree that estimating expected returns is the central problem. DGU conclude that 1/N is hard to beat in practice. KPT and Kirby and Ostdiek show it can be beaten with disciplined estimates and low turnover. Jagannathan and Ma and Ledoit and Wolf locate the useful part of optimization in the covariance. None of these studies tests a universe made only of ETFs against one broad world ETF.</p>
+<p><strong>What this justifies for the three-block portfolio.</strong> It justifies treating equal weight as a serious benchmark rather than a straw man. It also supports long-only constraints, which act as shrinkage. A maximum-Sharpe objective depends on expected-return estimates, which is the input DGU show to be the weakest. The literature does not establish that the proposed optimizer will beat equal weight or a single world ETF out of sample; it suggests that minimum-variance or covariance-only variants have better odds.</p>
+<hr />
+<h2 id="3-factor-etfs">3. Factor ETFs</h2>
+<p><strong>Claim.</strong> Published factor premia shrink after publication and after a product launches. Many factors fail stricter statistical standards, costs remove the high-turnover anomalies, and the long side captures only part of value and momentum. On average, smart-beta ETFs deliver roughly the market return or less after fees once they are live.</p>
+<p><strong>In-sample evidence (and its reliability)</strong></p>
+<ul>
+<li>Harvey, Liu and Zhu (2016): a new factor should clear a t-statistic of about 3.0, and most claimed findings are likely false.</li>
+<li>Hou, Xue and Zhang (2020): of 452 anomalies, 65% fail at |t| &gt; 1.96 and 82% at |t| &gt; 2.78; 96% of trading-friction anomalies fail. Those that replicate are much smaller than originally reported.</li>
+</ul>
+<p><strong>After costs and long-only</strong></p>
+<ul>
+<li>Novy-Marx and Velikov (2016): most anomalies with turnover below 50% a month keep a significant net spread, while few high-turnover strategies survive. Size, value and profitability have the largest capacity.</li>
+<li>Israel and Moskowitz (2013): the long side accounts for almost all of the size premium, 60% of the value premium and about half of momentum. Value is weak among the largest stocks.</li>
+</ul>
+<p><strong>Out of sample and after launch</strong></p>
+<ul>
+<li>McLean and Pontiff (2016): the bibliographic page was opened, but it carries no abstract. The commonly quoted declines (26% lower out of sample, 58% lower after publication, across 97 predictors) are <strong>not verified on a page</strong> and should be checked before citing.</li>
+<li>Huang, Song and Xiang (2020, SSRN), as reported by InvestmentNews: smart-beta indices beat the market by 2.77% a year before ETF listing (backtest) and lagged it by 0.44% a year after listing, net of fees. The authors attribute the gap to data mining.</li>
+</ul>
+<p><strong>Agreement and disagreement.</strong> The sources converge that backtests and published premia overstate future returns. They differ on how much survives: Novy-Marx and Velikov and Israel and Moskowitz suggest that low-turnover tilts (value, profitability, size) keep part of the premium, while Huang et al. find no average excess return for ETFs after listing. No verified study isolates quality ETFs or dividend ETFs specifically.</p>
+<p><strong>What this justifies for the three-block portfolio.</strong> It justifies discounting any factor ETF's backtest. Only post-launch track records should feed the optimizer's expected returns, and low-turnover tilts are preferable. It does not justify assuming that a quality, dividend or value tilt will add return after fees.</p>
+<hr />
+<h2 id="4-inflation-linked-government-bonds-as-the-long-horizon-safe-asset">4. Inflation-linked government bonds as the long-horizon safe asset</h2>
+<p><strong>Claim.</strong> For a long-horizon, risk-averse investor, the riskless asset is not cash. It is an inflation-indexed bond whose maturity matches the horizon or liability, because it hedges changes in real interest rates. As risk aversion rises, the myopic demand for risky assets goes to zero but the intertemporal hedging demand remains. How much weight goes to risky assets depends on their expected premium over the real rate, so a higher real yield makes the indexed bond relatively more attractive.</p>
+<p><strong>Sources and how they compare</strong></p>
+<ul>
+<li>Campbell and Viceira (2001): conservative investors should hedge falling real rates, and long inflation-indexed bonds are the right instrument. Nominal bonds are a substitute only when inflation risk is low. Their 2002 book (<em>Strategic Asset Allocation</em>, OUP) develops this in a chapter of the same name, but its page was seen only in search results, so it is not cited.</li>
+<li>Brennan and Xia (2002) solve the finite-horizon problem with only nominal assets. Hedging demands depend on horizon, risk aversion and bond maturity, and the bond maturity should be chosen to match the horizon.</li>
+<li>Kothari and Shanken (2004): simulated indexed-bond returns have lower real volatility and much lower correlation with stocks. Efficient portfolios hold substantial indexed-bond weights, which TIPS data from February 1997 to July 2003 broadly confirm.</li>
+<li>Campbell, Shiller and Viceira (2009): long real yields fell from the 1990s to 2008, then spiked in the crisis, and breakevens collapsed. Even so, indexed bonds still provide a safe asset for long-term investors, despite short-run volatility and illiquidity.</li>
+</ul>
+<p><strong>Agreement and disagreement.</strong> The sources agree that a maturity-matched indexed bond is the lowest-risk asset for a long-horizon investor. Brennan and Xia is the nominal-only case and converges with Campbell and Viceira once indexed bonds exist. The 2009 paper adds the main caveat: mark-to-market volatility and liquidity risk in stress. No verified source gives a formula linking the optimal weight to the level of the real yield; that link is a reading of the models, not a tested result.</p>
+<p><strong>What this justifies for the three-block portfolio.</strong> It justifies an inflation-linked, maturity-matched block to fund a dated liability in the spending currency (in Brazil, NTN-B). It does not justify a specific weight, and it does not settle how high the cap should be. No verified academic study models optimal NTN-B allocation or Brazilian sovereign risk.</p>
+<hr />
+<h2 id="5-currency-for-an-investor-who-spends-in-an-emerging-market-currency">5. Currency for an investor who spends in an emerging-market currency</h2>
+<p><strong>Claim.</strong> The hedge decision depends on how each currency co-moves with the risky portfolio, measured in the currency the investor consumes in (economic exposure), not the currency of the account. For foreign bonds, the evidence favors hedging close to fully. For foreign equities, the answer depends on the home currency: holding "safe-haven" currencies (USD, EUR, CHF) unhedged lowers equity portfolio risk.</p>
+<p><strong>Sources and how they compare</strong></p>
+<ul>
+<li>Perold and Schulman (1988): hedging has a long-run expected return near zero, so it is a "free lunch" that cuts risk. They recommend a hedged benchmark and treating currency exposure as an active decision.</li>
+<li>Black (1989): in an idealized world, hedge foreign equities at the same ratio for every country, always below 100%. The ratio does not depend on where the investor lives.</li>
+<li>Campbell, Serfaty-de Medeiros and Viceira (2010): in 1975 to 2005, USD, EUR and CHF moved against global equities. A risk-minimizing equity investor should hold them even though their average return is low. For global bonds, minimum risk is close to a full hedge with a modest long USD position.</li>
+<li>Schmittmann (2010, IMF): for German, Japanese, UK and US investors in 1975 to 2009, hedging cuts volatility substantially at quarterly horizons, and the benefit persists up to five years, contrary to earlier studies.</li>
+<li>Vanguard (2026), "The FX dimension": the rule of thumb is to hedge bond exposures and leave most foreign equities unhedged. Only the summary page was opened.</li>
+</ul>
+<p><strong>Agreement and disagreement.</strong> All five agree on hedging foreign bonds. On equities they disagree:
+- Perold and Schulman favor a full hedge.
+- Black favors a partial, universal hedge.
+- Campbell et al. contradict "universal" by showing the answer depends on the home currency.
+- Vanguard lands in between, leaving most equities unhedged.</p>
+<p><strong>US vs. Brazilian investor.</strong> These are not the same case. For a US investor, the home currency is itself a safe haven, so leaving foreign equities unhedged adds exposure to procyclical currencies. For an investor spending in BRL, a risk-on currency, unhedged USD assets tend to gain when global equities fall. This is an inference from Campbell et al.'s framework; <strong>no verified study tests BRL directly</strong>.</p>
+<p><strong>What this justifies for the three-block portfolio.</strong> It supports hedging foreign bonds and supports leaving foreign equities largely unhedged for a BRL spender. It also implies that the safety and inflation blocks, which fund BRL spending, belong in BRL instruments. It does not quantify the hedge ratio for BRL.</p>
+<hr />
+<h2 id="6-rebalancing">6. Rebalancing</h2>
+<p><strong>Claim.</strong> Rebalancing exists to keep risk near the target allocation, not to add return. No frequency or band is optimal for risk-adjusted return, and infrequent monitoring with tolerance bands cuts trading. Whether a "rebalancing bonus" exists is disputed.</p>
+<p><strong>Sources and how they compare</strong></p>
+<ul>
+<li>Jaconetti, Kinniry and Zilbering (2010, Vanguard; a third-party copy of the PDF was opened). They state that the main goal is to minimize risk relative to the target, not to maximize returns. Risk-adjusted returns are similar whether rebalancing is monthly, quarterly or annual. Trading differs widely: 1,008 rebalancing events for monthly with no band vs. 15 for annual with a 10% band. They suggest monitoring once or twice a year with roughly 5% bands. The section on using new cash flows first was not verified on the pages read.</li>
+<li>Daryanani (2008), executive summary only: look often, trade rarely. Reviewing every two weeks and rebalancing only the asset classes outside wide bands "more than doubled" the benefit vs. annual rebalancing.</li>
+<li>Willenbrock (2011): the diversification return comes from rebalancing itself (selling winners, buying losers), not from lower variance. It explains most of the excess return of the Gorton and Rouwenhorst commodity index.</li>
+</ul>
+<p><strong>Agreement and disagreement.</strong> All agree that bands are cheaper than frequent calendar rebalancing. They disagree on return: Vanguard sees no reliable gain, Willenbrock shows a real effect among volatile, weakly correlated assets, and Daryanani claims a gain. A replication reported to find Daryanani's gain statistically insignificant was <strong>not verified</strong>. Vanguard's 2022 "Rational rebalancing" paper could not be opened (broken links).</p>
+<p><strong>What this justifies for the three-block portfolio.</strong> It justifies band-based checks on a set calendar, framed as risk control around the mandate. It also makes routing new cash to underweight sleeves before selling a reasonable cost saving, though the primary source for that point was not verified. It does not justify promising a return from rebalancing.</p>
+<hr />
+<h2 id="7-funds-of-etfs-and-etf-only-portfolios">7. Funds of ETFs and ETF-only portfolios</h2>
+<p><strong>Claim.</strong> Goal-based designs split wealth into sub-portfolios, each with its own risk limit. Das et al. show this can be reconciled with mean-variance efficiency. Actively managed ETFs that hold only other ETFs exist in the market, and fee layering is the main structural risk. <strong>No verified product combines a 12-month cash floor, a capped inflation-linked sleeve, and an optimizer-weighted ETF growth sleeve.</strong></p>
+<p><strong>Sources and how they compare</strong></p>
+<ul>
+<li>Das, Markowitz, Scheid and Statman (2010): each mental account has a return threshold, and its risk is the probability of missing it. Mean-variance, mental-account and VaR formulations are mathematically equivalent, and the aggregate portfolio is efficient when short sales are allowed. Banning short sales costs little in certainty-equivalent terms.</li>
+<li>Brown, Goetzmann and Liang (2002): in funds of hedge funds, layered fees can, under some conditions, exceed realized returns. The authors propose an alternative fee structure.</li>
+<li>BlackRock (2026), iShares LifePath Target Date 2035 ETF fact sheet: an active ETF launched 2023-10-17, with 13 holdings, all iShares ETFs. Total expense is 0.10%, made up only of acquired fund fees; the management fee is 0.00%. As of 2026-06-30 it held 66.10% equity, 33.45% fixed income and 0.44% cash.</li>
+</ul>
+<p><strong>Nearest neighbor.</strong> The iShares LifePath ETF is the closest verified structural analog: an actively managed ETF holding only ETFs, with no second fee layer. The match is only moderate:
+- Weights follow a target-date glide path, not a maximum-Sharpe optimizer.
+- There is no explicit 12-month cash floor (0.44% cash).
+- No TIPS or T-bill ETF appears among the top holdings, so there is no capped inflation sleeve.
+- It is built for a US investor, not one spending in BRL.</p>
+<p>Das et al. is the closest academic analog for separating the three blocks.</p>
+<p><strong>Agreement and disagreement.</strong> Das et al. formalize goal-based bucketing and show it can be reconciled with whole-portfolio optimization. Brown et al. document harm from fee layering. The LifePath structure (acquired fund fees only, zero management fee) shows one way to avoid a second fee layer.</p>
+<p><strong>What this justifies for the three-block portfolio.</strong> It supports separating the safety, inflation and growth blocks with distinct risk limits, and it supports a fee design that avoids double layering. It does not provide evidence on how such a fund performs, because no verified close match exists.</p>
+<hr />
+<h2 id="8-portfolios-of-etfs-in-depth-second-research-pass">8. Portfolios of ETFs in depth (second research pass)</h2>
+<p><strong>Claim.</strong> Direct evidence on optimizing weights <em>across ETFs</em> is thin. What exists points one way: the value of an ETF portfolio comes from broad, cheap funds, low turnover, and not believing backtests. Sophisticated weighting (maximum Sharpe, HRP) has no verified, peer-reviewed, out-of-sample win over equal weight in an ETF universe after costs.</p>
+<p><strong>8.1 Optimizing across ETF universes.</strong>
+- No peer-reviewed study that optimizes an ETF universe against equal weight with costs could be opened.
+- López de Prado (2016, <em>Journal of Portfolio Management</em>), "Building Diversified Portfolios that Outperform Out-of-Sample", introduces hierarchical risk parity (HRP). The SSRN page was blocked and the mirrored PDF could not be read. Two points come only from search snippets and are not verified:
+  - the test uses Monte Carlo simulation, not real ETFs;
+  - HRP has lower out-of-sample variance than Markowitz.
+- The paper does not show a return advantage, and it is not a study of ETFs.
+- Kipnis (2017) replicates the HRP weights in R and places HRP between unstable mean-variance and inverse volatility, but runs no comparative backtest.
+- Two ETF-universe studies were seen only in search results and are not cited: a 2025 Central European University thesis on 30 US ETFs, and Kaucic and Valentinuz (2018) on 56 ETFs listed in Italy.</p>
+<p><strong>8.2 How investors use ETFs.</strong>
+- Bhattacharya, Loos, Meyer and Hackethal (2017, <em>Review of Finance</em>, not <em>Review of Financial Studies</em>) study 6,949 clients of a German broker in 2005 to 2010, of whom 1,080 traded ETFs.
+- Adopting ETFs did not improve portfolios, even before trading costs.
+- The HKUST summary attributes the loss mainly to poor timing and to choosing narrow sector and country ETFs. No investor group lost by holding cheap, broadly diversified ETFs.</p>
+<p><strong>8.3 ETF strategists and managed ETF portfolios.</strong>
+- In 2014 the SEC settled with F-Squared (AlphaSector) for USD 35 million, as reported by <em>Financial Advisor</em>.
+- The 2001 to 2008 track record was a backtest of an algorithm that only existed from September 2008. A signal-timing error inflated the hypothetical results by about 350%.
+- This is the clearest practitioner warning against marketing an optimized ETF strategy on in-sample results.
+- Morningstar's ETF managed portfolio landscape reports were seen only in snippets and are not cited.</p>
+<p><strong>8.4 Robo-advisors.</strong>
+- D'Acunto, Prabhala and Rossi (2019, <em>Review of Financial Studies</em>; opened as CESifo WP 6907):
+  - investors who held fewer than 5 stocks before adopting the robo-advisor gained diversification, lower volatility and better performance;
+  - investors who held more than 10 stocks gained little and traded more.
+- The optimizer studied allocates across stocks, not ETFs.
+- Betterment's public methodology (2026), a primary practitioner source:
+  - runs mean-variance on equilibrium returns obtained by reverse optimization from the global market portfolio, blended with forecasts from large asset managers;
+  - averages maximum-Sharpe weights over thousands of simulated 15-year samples (a form of resampling);
+  - caps deviations from an ACWI IMI benchmark.
+- Betterment's design amounts to optimization anchored on the broad world portfolio rather than on historical means.</p>
+<p><strong>8.5 The Brazilian investor: vehicles and tax.</strong>
+- State Street (Huang, 2026): an Irish UCITS ETF generally suffers 15% US dividend withholding at fund level under the US-Ireland treaty. A US-listed ETF is often withheld at 30% at the investor level when no treaty applies. UCITS ETFs trade with lower on-screen liquidity and wider spreads. The article does not address US estate tax.
+- B3 Bora Investir (updated 2024-01-10) describes the rules for B3-listed equity ETFs and BDRs of ETFs:
+  - capital gains are taxed at 15% (20% for day trades), assessed monthly, with no exemption threshold;
+  - dividends from BDRs of US ETFs bear 30% US withholding, IOF and depositary fees, and go to the Carnê-Leão with a credit for the US tax.
+- The B3 page predates the effects of Law 14.754/2023 on individuals. The law's text could not be opened, so the 15% annual regime for offshore holdings is <strong>not verified</strong> here.
+- ETFs Brasil comparison page: the B3-listed world fund VWRA11 (launched 2025-09-30) charges 0.52% a year and holds the Vanguard FTSE All-World UCITS ETF. The S&amp;P 500 feeder IVVB11 charges 0.23%. A single world fund is therefore available on B3, but at more than twice the fee of the S&amp;P 500 feeder.</p>
+<p><strong>Agreement and disagreement.</strong> The sources agree that unconstrained optimizers are unstable and that investor behavior (timing, narrow funds) destroys more value than weighting choices add. They differ in remedy: López de Prado proposes HRP, while Betterment anchors mean-variance on market weights and resamples. Neither offers verified evidence of beating equal weight or one world ETF out of sample after costs.</p>
+<p><strong>What this justifies for the three-block portfolio.</strong> It supports a growth sleeve of broad, low-cost ETFs, an optimizer anchored on the world portfolio with tight bounds, and a strict ban on presenting backtests as track records. For a BRL investor it makes the choice of vehicle (UCITS, US-listed, B3 feeder) a first-order fee and tax decision. Whether the optimizer beats equal weight remains unproven.</p>
+<hr />
+<h2 id="9-practitioner-and-non-academic-views-on-portfolio-optimization">9. Practitioner and non-academic views on portfolio optimization</h2>
+<p><strong>Claim.</strong> The practitioner sources that could be verified share the academic diagnosis: expected returns are the weak input, not the optimizer. They answer with risk-based methods, market-anchored inputs, constraints, and careful rebalancing. None shows an optimizer beating a simple market-anchored portfolio.</p>
+<p><strong>Sources and how they compare</strong>
+- <strong>Open-source tools.</strong>
+  - PyPortfolioOpt documentation (Robert Martin) warns that poor expected-return estimates can do more harm than good. It advises investing effort in the risk model and offers Black-Litterman.
+  - Riskfolio-Lib documentation (Dany Cajas) supports HRP, HERC, NCO, risk parity and Black-Litterman. Its warnings are mostly about solvers.
+- <strong>Portfolio Visualizer.</strong> Its optimizer page states that the result does not predict which allocation will do best outside the chosen period. In practice it is an in-sample tool.
+- <strong>Risk parity.</strong> Bridgewater's "The All Weather Story" (2012) balances risk across four growth and inflation regimes so that no forecast of the regime is needed. It is the practitioner root of risk parity.
+- <strong>Rebalancing timing.</strong>
+  - Newfound Research (Hoffstein, 2013): changing only the day of the month of rebalancing moved the maximum drawdown of a 10-month moving-average rule on SPY from 19.03% to 30.22%. Spreading the rebalance over the month removed this dependence with little extra turnover.
+  - Newfound (Hoffstein, 2019): semiannually rebalanced smart-beta portfolios showed 100 to 400 bps of dispersion from rebalance date alone.
+- <strong>Equal weight.</strong> Rational Reminder episode 394 (Felix, Bortolotti, Wilson, 2026-01-29) concerns 1/N across <em>stocks</em>, not across asset-class ETFs:
+  - equal-weight S&amp;P 500 funds beat cap weight in backtests since 1971 but trailed in live funds over the last 10 years;
+  - the hosts attribute the gap to size and value tilts with negative momentum;
+  - turnover is about 10 times that of cap weight.
+- <strong>Asset-allocation comparisons.</strong> Meb Faber's <em>Global Asset Allocation</em> (2015) compares 60/40, risk parity, the Permanent Portfolio, the global market portfolio and endowment-style allocations. Only the launch page was opened; the book's conclusion is not verified.
+- <strong>YouTube.</strong> Titles and channels were confirmed through YouTube's oEmbed endpoint, but descriptions and transcripts were not accessible. Their content is reviewed in the <a href="#annex-literature-review-02">lectures and talks annex</a>:
+  - two explainers from the Finance Research Gate channel, on HRP and on risk parity;
+  - a Lead-Lag Media episode on risk parity;
+  - a Cornell Financial Engineering Manhattan seminar by López de Prado on why machine-learning funds fail;
+  - from Brazil: BTG Pactual's "Investindo pelo Mundo" on UCITS ETFs, and Abner Araujo comparing IVV and VT.</p>
+<p><strong>Agreement and disagreement.</strong> Practitioners agree with DeMiguel et al. (2009) that estimation error dominates and that in-sample optima do not transfer. They split on the remedy:
+- tool builders promote HRP and risk parity, without verified out-of-sample wins over 1/N;
+- Betterment anchors on the market portfolio and resamples;
+- Rational Reminder treats equal weight among stocks as a costly factor bet.</p>
+<p>No verified practitioner source engages with Kritzman et al. (2010).</p>
+<p><strong>What this justifies for the three-block portfolio.</strong> Five practices follow:
+- replace historical means with equilibrium or anchored inputs;
+- bound weights and turnover;
+- report the optimizer's results as descriptive, not predictive;
+- spread rebalancing over time or use bands to reduce timing luck;
+- keep 1/N across ETFs distinct from 1/N across stocks.</p>
+<p>It does not justify claiming that any of these methods will outperform.</p>
+<hr />
+<h2 id="references">References</h2>
+<ul>
+<li>Becker, F., Gürtler, M., Hibbeln, M. (2015). Markowitz versus Michaud: Portfolio Optimization Strategies Reconsidered. <em>European Journal of Finance</em> 21(4), 269-291. <a href="https://ideas.repec.org/a/taf/eurjfi/v21y2015i4p269-291.html" target="_blank" rel="noopener">https://ideas.repec.org/a/taf/eurjfi/v21y2015i4p269-291.html</a></li>
+<li>Bessembinder, H. (2018). Do Stocks Outperform Treasury Bills? <em>Journal of Financial Economics</em>. Secondary page opened (ASU W. P. Carey news, 2018-09-17): <a href="https://news.wpcarey.asu.edu/20180917-do-stocks-outperform-treasury-bills" target="_blank" rel="noopener">https://news.wpcarey.asu.edu/20180917-do-stocks-outperform-treasury-bills</a></li>
+<li>Black, F. (1989). Universal Hedging: Optimizing Currency Risk and Reward in International Equity Portfolios. <em>Financial Analysts Journal</em> 45(4). <a href="https://rpc.cfainstitute.org/research/financial-analysts-journal/1989/universal-hedging-optimizing-currency-risk-and-reward-in-international-equity-portfolios" target="_blank" rel="noopener">https://rpc.cfainstitute.org/research/financial-analysts-journal/1989/universal-hedging-optimizing-currency-risk-and-reward-in-international-equity-portfolios</a></li>
+<li>BlackRock (2026). iShares LifePath Target Date 2035 ETF (ITDC) fact sheet, as of 2026-06-30. <a href="https://www.ishares.com/us/literature/fact-sheet/itdc-ishares-lifepath-target-date-2035-etf-fund-fact-sheet-en-us.pdf" target="_blank" rel="noopener">https://www.ishares.com/us/literature/fact-sheet/itdc-ishares-lifepath-target-date-2035-etf-fund-fact-sheet-en-us.pdf</a></li>
+<li>Brennan, M. J., Xia, Y. (2002). Dynamic Asset Allocation under Inflation. <em>Journal of Finance</em> 57(3), 1201-1238. <a href="https://ideas.repec.org/a/bla/jfinan/v57y2002i3p1201-1238.html" target="_blank" rel="noopener">https://ideas.repec.org/a/bla/jfinan/v57y2002i3p1201-1238.html</a></li>
+<li>Brown, S. J., Goetzmann, W. N., Liang, B. (2002). Fees on Fees in Funds of Funds. NYU Stern Working Paper FIN-02-031. <a href="https://archive.nyu.edu/handle/2451/26475" target="_blank" rel="noopener">https://archive.nyu.edu/handle/2451/26475</a></li>
+<li>Campbell, J. Y., Serfaty-de Medeiros, K., Viceira, L. M. (2010). Global Currency Hedging. <em>Journal of Finance</em> 65(1), 87-121. Opened as NBER WP 13088: <a href="https://www.nber.org/papers/w13088" target="_blank" rel="noopener">https://www.nber.org/papers/w13088</a></li>
+<li>Campbell, J. Y., Shiller, R. J., Viceira, L. M. (2009). Understanding Inflation-Indexed Bond Markets. <em>Brookings Papers on Economic Activity</em>, Spring 2009. <a href="https://www.brookings.edu/articles/understanding-inflation-indexed-bond-markets/" target="_blank" rel="noopener">https://www.brookings.edu/articles/understanding-inflation-indexed-bond-markets/</a></li>
+<li>Campbell, J. Y., Viceira, L. M. (2001). Who Should Buy Long-Term Bonds? <em>American Economic Review</em> 91(1), 99-127. <a href="https://www.aeaweb.org/articles?id=10.1257/aer.91.1.99" target="_blank" rel="noopener">https://www.aeaweb.org/articles?id=10.1257/aer.91.1.99</a></li>
+<li>Carhart, M. M. (1997). On Persistence in Mutual Fund Performance. <em>Journal of Finance</em> 52(1), 57-82. <a href="https://forrt.org/flora-replication-atlas/doi/10.1111/j.1540-6261.1997.tb03808.x/" target="_blank" rel="noopener">https://forrt.org/flora-replication-atlas/doi/10.1111/j.1540-6261.1997.tb03808.x/</a></li>
+<li>Das, S., Markowitz, H., Scheid, J., Statman, M. (2010). Portfolio Optimization with Mental Accounts. <em>Journal of Financial and Quantitative Analysis</em> 45(2), 311-334. <a href="https://ideas.repec.org/a/cup/jfinqa/v45y2010i02p311-334_00.html" target="_blank" rel="noopener">https://ideas.repec.org/a/cup/jfinqa/v45y2010i02p311-334_00.html</a></li>
+<li>Daryanani, G. (2008). Opportunistic Rebalancing: A New Paradigm for Wealth Managers. <em>Journal of Financial Planning</em>, January 2008. <a href="https://www.financialplanningassociation.org/article/journal/JAN08-opportunistic-rebalancing-new-paradigm-wealth-managers" target="_blank" rel="noopener">https://www.financialplanningassociation.org/article/journal/JAN08-opportunistic-rebalancing-new-paradigm-wealth-managers</a></li>
+<li>DeMiguel, V., Garlappi, L., Uppal, R. (2009). Optimal Versus Naive Diversification: How Inefficient Is the 1/N Portfolio Strategy? <em>Review of Financial Studies</em> 22(5), 1915-1953. <a href="https://academic.oup.com/rfs/article-abstract/22/5/1915/1592901" target="_blank" rel="noopener">https://academic.oup.com/rfs/article-abstract/22/5/1915/1592901</a></li>
+<li>Fama, E. F., French, K. R. (2010). Luck versus Skill in the Cross-Section of Mutual Fund Returns. <em>Journal of Finance</em> 65(5), 1915-1947. <a href="https://ideas.repec.org/a/bla/jfinan/v65y2010i5p1915-1947.html" target="_blank" rel="noopener">https://ideas.repec.org/a/bla/jfinan/v65y2010i5p1915-1947.html</a></li>
+<li>Funds Society (2025-10-29). Report on SPIVA Latin America Mid-Year 2025 (secondary source for S&amp;P DJI data). <a href="https://www.fundssociety.com/br/news/os-fundos-ativos-do-brasil-e-do-chile-superaram-o-indice-de-referencia-no-primeiro-semestre/" target="_blank" rel="noopener">https://www.fundssociety.com/br/news/os-fundos-ativos-do-brasil-e-do-chile-superaram-o-indice-de-referencia-no-primeiro-semestre/</a></li>
+<li>Harvey, C. R., Liu, Y., Zhu, H. (2016). ...and the Cross-Section of Expected Returns. <em>Review of Financial Studies</em> 29(1), 5-68. <a href="https://ideas.repec.org/a/oup/rfinst/v29y2016i1p5-68..html" target="_blank" rel="noopener">https://ideas.repec.org/a/oup/rfinst/v29y2016i1p5-68..html</a></li>
+<li>Hou, K., Xue, C., Zhang, L. (2020). Replicating Anomalies. <em>Review of Financial Studies</em> 33(5), 2019-2133. <a href="https://ideas.repec.org/a/oup/rfinst/v33y2020i5p2019-2133..html" target="_blank" rel="noopener">https://ideas.repec.org/a/oup/rfinst/v33y2020i5p2019-2133..html</a></li>
+<li>Huang, S., Song, Y., Xiang, H. (2020). The Smart Beta Mirage. SSRN working paper. Secondary page opened (InvestmentNews): <a href="https://www.investmentnews.com/smart-beta-funds-dont-live-up-backtesting-196778" target="_blank" rel="noopener">https://www.investmentnews.com/smart-beta-funds-dont-live-up-backtesting-196778</a></li>
+<li>ICFS. SPIVA scorecard results (secondary source for SPIVA U.S. Year-End 2024). <a href="https://icfs.com/specialists-desk/spiva-scorecard-results" target="_blank" rel="noopener">https://icfs.com/specialists-desk/spiva-scorecard-results</a></li>
+<li>Israel, R., Moskowitz, T. J. (2013). The Role of Shorting, Firm Size, and Time on Market Anomalies. <em>Journal of Financial Economics</em> 108(2), 275-301. <a href="https://ideas.repec.org/a/eee/jfinec/v108y2013i2p275-301.html" target="_blank" rel="noopener">https://ideas.repec.org/a/eee/jfinec/v108y2013i2p275-301.html</a></li>
+<li>Jaconetti, C. M., Kinniry, F. M., Jr., Zilbering, Y. (2010). Best Practices for Portfolio Rebalancing. Vanguard Research. Third-party copy opened: <a href="https://indexacapital.com/bundles/unaiadvisor/docs/papers/2010-Vanguard-Best-practices-for-portfolio-rebalancing.pdf?v=241" target="_blank" rel="noopener">https://indexacapital.com/bundles/unaiadvisor/docs/papers/2010-Vanguard-Best-practices-for-portfolio-rebalancing.pdf?v=241</a></li>
+<li>Jagannathan, R., Ma, T. (2003). Risk Reduction in Large Portfolios: Why Imposing the Wrong Constraints Helps. <em>Journal of Finance</em> 58(4), 1651-1684. Opened as NBER WP 8922: <a href="https://nber.org/papers/w8922" target="_blank" rel="noopener">https://nber.org/papers/w8922</a></li>
+<li>Kirby, C., Ostdiek, B. (2012). It's All in the Timing: Simple Active Portfolio Strategies that Outperform Naive Diversification. <em>Journal of Financial and Quantitative Analysis</em> 47(2), 437-467. <a href="https://ideas.repec.org/a/cup/jfinqa/v47y2012i02p437-467_00.html" target="_blank" rel="noopener">https://ideas.repec.org/a/cup/jfinqa/v47y2012i02p437-467_00.html</a></li>
+<li>Kothari, S. P., Shanken, J. (2004). Asset Allocation with Inflation-Protected Bonds. <em>Financial Analysts Journal</em> 60(1). <a href="https://rpc.cfainstitute.org/research/financial-analysts-journal/2004/asset-allocation-with-inflation-protected-bonds" target="_blank" rel="noopener">https://rpc.cfainstitute.org/research/financial-analysts-journal/2004/asset-allocation-with-inflation-protected-bonds</a></li>
+<li>Kritzman, M., Page, S., Turkington, D. (2010). In Defense of Optimization: The Fallacy of 1/N. <em>Financial Analysts Journal</em> 66(2), 31-39. <a href="https://ideas.repec.org/a/taf/ufajxx/v66y2010i2p31-39.html" target="_blank" rel="noopener">https://ideas.repec.org/a/taf/ufajxx/v66y2010i2p31-39.html</a></li>
+<li>Ledoit, O., Wolf, M. (2003). Honey, I Shrunk the Sample Covariance Matrix. UPF Economics Working Paper 691. <a href="https://ideas.repec.org/p/upf/upfgen/691.html" target="_blank" rel="noopener">https://ideas.repec.org/p/upf/upfgen/691.html</a></li>
+<li>Markowitz, H. (1952). Portfolio Selection. <em>Journal of Finance</em> 7(1), 77-91. Metadata page opened: <a href="https://econpapers.repec.org/RAS/pma73.htm" target="_blank" rel="noopener">https://econpapers.repec.org/RAS/pma73.htm</a></li>
+<li>McLean, R. D., Pontiff, J. (2016). Does Academic Research Destroy Stock Return Predictability? <em>Journal of Finance</em> 71(1), 5-32. Metadata page only: <a href="https://ideas.repec.org/a/bla/jfinan/v71y2016i1p5-32.html" target="_blank" rel="noopener">https://ideas.repec.org/a/bla/jfinan/v71y2016i1p5-32.html</a></li>
+<li>Novy-Marx, R., Velikov, M. (2016). A Taxonomy of Anomalies and Their Trading Costs. <em>Review of Financial Studies</em> 29(1), 104-147. <a href="https://ideas.repec.org/a/oup/rfinst/v29y2016i1p104-147..html" target="_blank" rel="noopener">https://ideas.repec.org/a/oup/rfinst/v29y2016i1p104-147..html</a></li>
+<li>Perold, A. F., Schulman, E. C. (1988). The Free Lunch in Currency Hedging: Implications for Investment Policy and Performance Standards. <em>Financial Analysts Journal</em> 44(3). <a href="https://rpc.cfainstitute.org/research/financial-analysts-journal/1988/the-free-lunch-in-currency-hedging-implications-for-investment-policy-and-peformance-standards" target="_blank" rel="noopener">https://rpc.cfainstitute.org/research/financial-analysts-journal/1988/the-free-lunch-in-currency-hedging-implications-for-investment-policy-and-peformance-standards</a></li>
+<li>B3 Bora Investir. Gestão ativa enfrenta desafio persistente para superar o mercado (secondary source for SPIVA Latin America). <a href="https://borainvestir.b3.com.br/tipos-de-investimentos/renda-variavel/fundos-investimento/gestao-ativa-enfrenta-desafio-persistente-para-superar-o-mercado/" target="_blank" rel="noopener">https://borainvestir.b3.com.br/tipos-de-investimentos/renda-variavel/fundos-investimento/gestao-ativa-enfrenta-desafio-persistente-para-superar-o-mercado/</a></li>
+<li>Schmittmann, J. M. (2010). Currency Hedging for International Portfolios. IMF Working Paper 10/151. <a href="https://ideas.repec.org/p/imf/imfwpa/2010-151.html" target="_blank" rel="noopener">https://ideas.repec.org/p/imf/imfwpa/2010-151.html</a></li>
+<li>Vanguard (2026). The FX Dimension: Evaluating Currency Hedging for Global Multi-Asset Portfolios. Vanguard Research. <a href="https://www.vanguard.co.uk/professional/research/the-fx-dimension-evaluating-currency-hedging-for-global-multi-asset-portfolios" target="_blank" rel="noopener">https://www.vanguard.co.uk/professional/research/the-fx-dimension-evaluating-currency-hedging-for-global-multi-asset-portfolios</a></li>
+<li>Willenbrock, S. (2011). Diversification Return, Portfolio Rebalancing, and the Commodity Return Puzzle. <em>Financial Analysts Journal</em> 67(4), 42-49. Opened on arXiv: <a href="https://arxiv.org/abs/1109.1256" target="_blank" rel="noopener">https://arxiv.org/abs/1109.1256</a></li>
+</ul>
+<h3 id="references-added-in-the-second-pass-themes-8-and-9">References added in the second pass (Themes 8 and 9)</h3>
+<ul>
+<li>Betterment (2026, updated 2026-06-15). Betterment Portfolio Strategy. Betterment Resources. <a href="https://www.betterment.com/resources/betterment-portfolio-strategy" target="_blank" rel="noopener">https://www.betterment.com/resources/betterment-portfolio-strategy</a></li>
+<li>Bhattacharya, U., Loos, B., Meyer, S., Hackethal, A. (2017). Abusing ETFs. <em>Review of Finance</em> 21(3), 1217-1250. <a href="https://ideas.repec.org/a/oup/revfin/v21y2017i3p1217-1250..html" target="_blank" rel="noopener">https://ideas.repec.org/a/oup/revfin/v21y2017i3p1217-1250..html</a> (summary: <a href="https://bm.hkust.edu.hk/bizinsight/2018/08/poor-timing-and-heavy-hand-undermine-benefits-etfs" target="_blank" rel="noopener">https://bm.hkust.edu.hk/bizinsight/2018/08/poor-timing-and-heavy-hand-undermine-benefits-etfs</a>)</li>
+<li>B3 Bora Investir (2022, updated 2024-01-10). Como ficam os impostos para investimentos em ETFs e BDRs? <a href="https://borainvestir.b3.com.br/tipos-de-investimentos/renda-variavel/etfs/tributacao-etf-e-bdr/" target="_blank" rel="noopener">https://borainvestir.b3.com.br/tipos-de-investimentos/renda-variavel/etfs/tributacao-etf-e-bdr/</a></li>
+<li>Bridgewater Associates (2012). The All Weather Story. <a href="https://www.bridgewater.com/research-and-insights/the-all-weather-story" target="_blank" rel="noopener">https://www.bridgewater.com/research-and-insights/the-all-weather-story</a></li>
+<li>Cajas, D. Riskfolio-Lib documentation (v7.4). <a href="https://riskfolio-lib.readthedocs.io/en/latest/" target="_blank" rel="noopener">https://riskfolio-lib.readthedocs.io/en/latest/</a></li>
+<li>D'Acunto, F., Prabhala, N., Rossi, A. G. (2019). The Promises and Pitfalls of Robo-Advising. <em>Review of Financial Studies</em> 32(5). Opened as CESifo Working Paper 6907 (2018): <a href="https://www.ifo.de/en/cesifo/publications/2018/working-paper/promises-and-pitfalls-robo-advising" target="_blank" rel="noopener">https://www.ifo.de/en/cesifo/publications/2018/working-paper/promises-and-pitfalls-robo-advising</a></li>
+<li>ETFs Brasil. Comparador IVVB11 vs VWRA11. <a href="https://www.etfsbrasil.com.br/comparador/ivvb11/vwra11" target="_blank" rel="noopener">https://www.etfsbrasil.com.br/comparador/ivvb11/vwra11</a></li>
+<li>Faber, M. (2015). Global Asset Allocation (book launch page). mebfaber.com. <a href="https://mebfaber.com/global-asset-allocation/" target="_blank" rel="noopener">https://mebfaber.com/global-asset-allocation/</a></li>
+<li>Felix, B., Bortolotti, D., Wilson, B. (2026-01-29). Episode 394: Equal Weight vs. Market Cap Weight Index Funds. <em>Rational Reminder</em> podcast. <a href="https://rationalreminder.ca/podcast/394" target="_blank" rel="noopener">https://rationalreminder.ca/podcast/394</a></li>
+<li>Hoffstein, C. (2013-08-07). The Luck of the Rebalance Timing. Newfound Research blog. <a href="https://blog.thinknewfound.com/2013/08/the-luck-of-the-rebalance-timing/" target="_blank" rel="noopener">https://blog.thinknewfound.com/2013/08/the-luck-of-the-rebalance-timing/</a></li>
+<li>Hoffstein, C. (2019-11-18). The Dumb (Timing) Luck of Smart Beta. Newfound Research blog. <a href="https://blog.thinknewfound.com/2019/11/the-dumb-timing-luck-of-smart-beta/" target="_blank" rel="noopener">https://blog.thinknewfound.com/2019/11/the-dumb-timing-luck-of-smart-beta/</a></li>
+<li>Huang, D. (2026-06-02). Considerations for non-US investors: US ETFs vs Irish UCITS. State Street Investment Management. <a href="https://www.ssga.com/us/en/institutional/insights/considerations-for-non-us-investors-us-etfs-vs-irish-ucits" target="_blank" rel="noopener">https://www.ssga.com/us/en/institutional/insights/considerations-for-non-us-investors-us-etfs-vs-irish-ucits</a></li>
+<li>Kipnis, I. (2017-05-22). The Marcos Lopez de Prado Hierarchical Risk Parity Algorithm. QuantStrat TradeR via R-bloggers. <a href="https://www.r-bloggers.com/2017/05/the-marcos-lopez-de-prado-hierarchical-risk-parity-algorithm/amp/" target="_blank" rel="noopener">https://www.r-bloggers.com/2017/05/the-marcos-lopez-de-prado-hierarchical-risk-parity-algorithm/amp/</a></li>
+<li>Martin, R. PyPortfolioOpt documentation: Expected Returns. <a href="https://pyportfolioopt.readthedocs.io/en/latest/ExpectedReturns.html" target="_blank" rel="noopener">https://pyportfolioopt.readthedocs.io/en/latest/ExpectedReturns.html</a></li>
+<li>Portfolio Visualizer. Optimize Portfolio (tool page). <a href="https://www.portfoliovisualizer.com/optimize-portfolio" target="_blank" rel="noopener">https://www.portfoliovisualizer.com/optimize-portfolio</a></li>
+<li>Schlegel, J. (2014-12-22). F-Squared Slammed By SEC Over False Performance Claims. <em>Financial Advisor</em>. <a href="https://www.fa-mag.com/news/f-squared-slammed-by-sec-over-false-performance-claims-20256.html" target="_blank" rel="noopener">https://www.fa-mag.com/news/f-squared-slammed-by-sec-over-false-performance-claims-20256.html</a></li>
+<li>YouTube videos (content reviewed in the <a href="#annex-literature-review-02">lectures and talks annex</a>): Finance Research Gate, "Hierarchical Risk Parity HRP Portfolio Optimization", <a href="https://www.youtube.com/watch?v=_OPDNwtubZg" target="_blank" rel="noopener">https://www.youtube.com/watch?v=_OPDNwtubZg</a> ; Finance Research Gate, "Risk Parity Portfolio Optimization Explained Equal Risk Contributions in Practice", <a href="https://www.youtube.com/watch?v=aIJ9MM7I9kw" target="_blank" rel="noopener">https://www.youtube.com/watch?v=aIJ9MM7I9kw</a> ; Lead-Lag Media, "Stagflation Is Back: How Risk Parity Actually Works in 2026", <a href="https://www.youtube.com/watch?v=UkTDKOQO_2A" target="_blank" rel="noopener">https://www.youtube.com/watch?v=UkTDKOQO_2A</a> ; Cornell Financial Engineering Manhattan, "Marcos Lopez de Prado: The 7 Reasons Most Machine Learning Funds Fail", <a href="https://www.youtube.com/watch?v=npA8sI-k328" target="_blank" rel="noopener">https://www.youtube.com/watch?v=npA8sI-k328</a> ; BTG Pactual, "ETFs UCITS: como investir no exterior pagando menos imposto", <a href="https://www.youtube.com/watch?v=unQ4CCrmL30" target="_blank" rel="noopener">https://www.youtube.com/watch?v=unQ4CCrmL30</a> ; Abner Araujo, "IVV ou VT: Qual o Melhor ETF para Investir no Exterior", <a href="https://www.youtube.com/watch?v=RJbQe-cQnrM" target="_blank" rel="noopener">https://www.youtube.com/watch?v=RJbQe-cQnrM</a></li>
+</ul>
+<h2 id="not-found">Not found</h2>
+<p>Second pass:
+- <strong>ETF universes.</strong> No peer-reviewed study of mean-variance, maximum Sharpe or Black-Litterman on sector or country ETFs vs. equal weight with costs.
+- <strong>HRP.</strong> The full text of López de Prado (2016) could not be read.
+- <strong>ETF costs.</strong> No verified literature on ETF tracking error, total cost or holdings overlap.
+- <strong>Managed portfolios and robo-advisors.</strong> Morningstar's ETF managed portfolio reports and Wealthfront's methodology (404) were not opened.
+- <strong>Law 14.754/2023.</strong> Official text not opened; the Planalto site failed.
+- <strong>US estate tax.</strong> No IRS source opened for non-resident investors.
+- <strong>Practitioner sources.</strong> Bogleheads wiki (403); Patrick Boyle (no attributable video found); QuantStart and Quantopian lectures; any practitioner source citing Kritzman et al. (2010).
+- <strong>YouTube.</strong> Transcripts were not accessible in this pass. Video content is reviewed in the <a href="#annex-literature-review-02">lectures and talks annex</a>.</p>
+<p>First pass:</p>
+<ul>
+<li><strong>SPIVA primary reports.</strong> All S&amp;P DJI pages returned HTTP 403; figures come only from secondary pages. The exact 15-year US figure is not verified.</li>
+<li><strong>Bessembinder (2018).</strong> The journal page was not opened; the venue and the exact figures rest on a university news page.</li>
+<li><strong>McLean and Pontiff (2016).</strong> The decay figures were not verified on an opened page.</li>
+<li><strong>Michaud resampling.</strong> No primary source was opened.</li>
+<li><strong>Factor-specific ETFs.</strong> No study isolating quality ETFs or dividend ETFs after launch was verified; the Research Affiliates "backtest vs. live" piece was blocked.</li>
+<li><strong>Campbell and Viceira (2002), <em>Strategic Asset Allocation</em>.</strong> Seen in search only.</li>
+<li><strong>Inflation-linked bonds.</strong> No formal model linking the optimal indexed-bond weight to the level of the real yield; no academic study of NTN-B / Tesouro IPCA+ allocation; no LDI source.</li>
+<li><strong>Currency.</strong> No peer-reviewed study of BRL co-movement with global equities from a Brazilian investor's perspective.</li>
+<li><strong>Rebalancing.</strong> Vanguard 2022 "Rational rebalancing" (broken links); the Vanguard section on rebalancing with new cash first; Masters (2003); Donohue and Yip (2003); Leland (1999); the replication of Daryanani.</li>
+<li><strong>Funds of ETFs.</strong> Chhabra (2005), Brunel, Evensky, Morningstar bucket research, robo-advisor whitepapers, Vanguard LifeStrategy, the published version of Brown et al., and Ang et al. on fund-of-funds fees were not opened. No Brazilian fund-of-ETFs source was found (the CVM Resolution 175 text was not read).</li>
+<li><strong>Close match.</strong> No published fund combines a cash floor, a capped inflation-linked sleeve and an optimizer-weighted ETF growth sleeve.</li>
+</ul></section>
+<section id="annex-literature-review-02" class="part annex"><h1 id="literature-review-argon-4-lectures-and-talks-on-a-portfolio-of-etfs">Literature review Argon 4: lectures and talks on a portfolio of ETFs</h1>
+<blockquote>
+<p><strong>AI-generated.</strong> Prepared with AI research agents (Argon 4) and edited by the author. Each claim was checked against the captions of its video on 2026-10-19, and the text was edited to match them. Formulas shown only on slides could not be checked.</p>
+</blockquote>
+<hr />
+<h2 id="context-and-objectives">Context &amp; Objectives</h2>
+<p>This literature review pass incorporates evidence extracted directly from verified video transcripts and lectures from quantitative researchers, institutional investors, and credentialed practitioners. It complements the academic papers in literature-review.md to address portfolio optimization for a managed portfolio serving a Brazilian investor who spends in BRL and has access to US-listed ETFs, Irish UCITS ETFs, and B3-listed ETFs. The portfolio under study has three blocks:</p>
+<p>Safety: 12 months of spending in BRL cash and short-term bonds.</p>
+<p>Inflation: Capped inflation-linked government bonds matched to liabilities.</p>
+<p>Growth: A long-only ETF sleeve weighted by an optimizer seeking maximum return per unit of risk after fees, evaluated against equal weighting (1/N) and a single broad world equity index.</p>
+<h2 id="1-out-of-sample-optimization">1. Out-of-Sample Optimization</h2>
+<h3 id="the-claim">The Claim</h3>
+<p>Out-of-sample portfolio optimization is severely degraded by covariance matrix estimation error and matrix inversion (Σ⁻¹), which amplifies sample noise and creates radical weight instability across estimation windows. While naive equal weighting (1/N) eliminates parameter estimation error, it introduces high turnover, unintended sector bets, and negative momentum drag. Advanced structural techniques—such as Hierarchical Risk Parity (HRP), Equal Risk Contribution (ERC / Risk Parity), and Marchenko-Pastur covariance denoising—achieve superior out-of-sample stability and higher risk-adjusted returns without incurring the costs and momentum penalties of equal weighting.</p>
+<h3 id="verified-video-evidence">Verified Video Evidence</h3>
+<p><strong>Reitan Kapital — Prof. Marcos López de Prado, "Professor Marcos Lopez de Prado on Machine Learning in Asset Management - Kapitaleierdagen 2024" (2024-12-17) <a href="https://www.youtube.com/watch?v=fOCzNFwmM7Y">https://www.youtube.com/watch?v=fOCzNFwmM7Y</a>:</strong></p>
+<ul>
+<li>Notes that standard Markowitz mean-variance optimization acts as an "error maximizer" due to high condition numbers in empirical covariance matrices.</li>
+<li>Demonstrates that applying the Marchenko-Pastur theorem from Random Matrix Theory to denoise covariance matrices yields a 94% reduction in mean squared error (MSE) for Maximum Sharpe portfolios in Monte Carlo trials.</li>
+<li>Identifies "signal-induced instability," showing that high correlation among assets shrinks the matrix determinant (det(Σ) = 1 − ρ²), causing extreme sensitivity in Σ⁻¹.</li>
+<li>Introduces Nested Cluster Optimization (NCO), which partitions the covariance matrix into blocks to isolate instability, reducing out-of-sample MSE by 47% to 55%.</li>
+</ul>
+<p><strong>Finance Research Gate — "Hierarchical Risk Parity HRP Portfolio Optimization" (2026-02-15) <a href="https://www.youtube.com/watch?v=_OPDNwtubZg">https://www.youtube.com/watch?v=_OPDNwtubZg</a>:</strong></p>
+<ul>
+<li>Details HRP tree clustering using a correlation-based distance.</li>
+<li>Explains cluster capital allocation using inverse variance portfolio (IVP) weights.</li>
+<li>Emphasizes that HRP bypasses full covariance matrix inversion.</li>
+<li>In a 4-asset empirical backtest (2000 to 2010, 12-month window, monthly rebalancing), the Minimum Variance Portfolio (MVP) achieved a higher out-of-sample Sharpe than HRP.</li>
+</ul>
+<p><strong>Finance Research Gate — "Risk Parity Portfolio Optimization Explained Equal Risk Contributions in Practice" (2026-02-12) <a href="https://www.youtube.com/watch?v=aIJ9MM7I9kw">https://www.youtube.com/watch?v=aIJ9MM7I9kw</a>:</strong></p>
+<ul>
+<li>Defines Equal Risk Contribution (ERC) where total risk contribution TRC_i = w_i · (Σw)_i / σ_p = σ_p / N.</li>
+<li>Notes that risk parity lacks a closed-form solution and must be solved iteratively.</li>
+<li>Demonstrates that Minimum Variance Portfolios suffer extreme weight flips across monthly rolling windows due to full matrix inversion (Σ⁻¹).</li>
+<li>Shows that risk parity achieves superior weight stability over time because it avoids full matrix inversion. In the same test, MVP had the higher out-of-sample return, with a similar Sharpe ratio.</li>
+</ul>
+<p><strong>Ben Felix — "The Problem with Equal Weight Index Funds" (2026-01-25) <a href="https://www.youtube.com/watch?v=xu7kMpLbJJs">https://www.youtube.com/watch?v=xu7kMpLbJJs</a>:</strong></p>
+<ul>
+<li>Demonstrates that equal-weighted index funds display higher long-term volatility than cap-weighted equivalents.</li>
+<li>Highlights that equal-weighted funds generate average annual turnover &gt;10 times higher than cap-weighted funds.</li>
+<li>Proves via multi-factor regression that equal weighting systematically trades against momentum, loading negatively on the Momentum factor (UMD &lt; 0).</li>
+</ul>
+<p><strong>Dimensional Fund Advisors — Mark Gochner, Jake DeKinder, Wes Krill, "The Death of the 60/40 Portfolio? | The Informed Investor 30" (2026-01-30) <a href="https://www.youtube.com/watch?v=2NSlam-fxuo">https://www.youtube.com/watch?v=2NSlam-fxuo</a>:</strong></p>
+<ul>
+<li>Traces 60/40 origins to mean-variance optimization, noting that reducing equity exposure from 100% to 60% cuts worst-calendar-year drawdowns from ~-40% to ~-20% with minor return sacrifice.</li>
+<li>Shows that even when short-term stock-bond correlations fluctuate, adding fixed income delivers a flat, consistent variance reduction over long horizons.</li>
+</ul>
+<h3 id="agreement-and-contradiction-with-academic-sources-literature-reviewmd">Agreement &amp; Contradiction with Academic Sources (literature-review.md)</h3>
+<p><strong>DeMiguel, Garlappi and Uppal (2009):</strong> The video evidence strongly supports the academic finding that parameter estimation error renders classic unconstrained mean-variance optimization unreliable out-of-sample. However, Ben Felix directly validates the downside of naive 1/N equal weighting highlighted in academic literature: its high turnover drag and negative momentum exposure (UMD &lt; 0).</p>
+<p><strong>Kritzman, Page and Turkington (2010) &amp; Covariance Shrinkage:</strong> López de Prado (Kapitaleierdagen 2024) reports, in Monte Carlo simulations, that Marchenko-Pastur denoising roughly doubles the error reduction of Ledoit-Wolf shrinkage for minimum variance (about 60 percent against 30 percent), and cuts the error of maximum-Sharpe portfolios by 94 percent. NCO adds a further 47 to 55 percent.</p>
+<p><strong>Empirical vs. Simulation Discrepancies:</strong> Finance Research Gate's 4-asset empirical backtest showed Minimum Variance beating HRP, whereas López de Prado's Monte Carlo simulations reported Sharpe gains above 31 percent for HRP. One small real-data test and one large simulation point in different directions.</p>
+<h3 id="implications-for-the-three-block-portfolio">Implications for the Three-Block Portfolio</h3>
+<p><strong>What it justifies:</strong> Justifies utilizing a cluster-based, noise-robust optimizer (such as HRP or NCO) for the Growth sleeve to allocate capital across ETF asset classes without relying on unstable full matrix inversions.</p>
+<p><strong>What it does NOT justify:</strong> Does NOT justify replacing the Growth sleeve with naive 1/N equal weighting (due to turnover and negative momentum drag), nor does it justify adding complex structured derivatives to the Safety or Inflation sleeves.</p>
+<h2 id="2-marcos-lópez-de-prado-talks">2. Marcos López de Prado Talks</h2>
+<h3 id="the-claim-1">The Claim</h3>
+<p>Quantitative investment strategies frequently fail out-of-sample because conventional finance relies on flawed methodological practices: forced integer differentiation (d = 1), time-based sampling, arbitrary labeling, and uncorrected backtesting. Achieving sustainable out-of-sample alpha requires adopting machine learning architectures grounded in financial theory, including fractional differentiation to preserve memory, non-time sampling (dollar/volume bars), meta-labeling for bet sizing, causal factor selection via Directed Acyclic Graphs (DAGs), and strict backtest overfitting controls like the Deflated Sharpe Ratio (DSR).</p>
+<h3 id="verified-video-evidence-1">Verified Video Evidence</h3>
+<p><strong>Cornell Financial Engineering Manhattan (CFEM) — Marcos López de Prado, "The 7 Reasons Most Machine Learning Funds Fail" (2019-05-13) <a href="https://www.youtube.com/watch?v=npA8sI-k328">https://www.youtube.com/watch?v=npA8sI-k328</a>:</strong></p>
+<ul>
+<li>Reason 1 (Sisyphus Paradigm): Siloed researchers working independently produce false discoveries; firms should operate collaborative "meta-strategy assembly lines."</li>
+<li>Reason 2 (Over-differentiation): Computing integer returns (d = 1) erases historical memory/signal. Fractional differentiation (d ∈ (0,1)) achieves stationarity while preserving memory.</li>
+<li>Reason 3 (Canonical Sampling): Time-based bars sample arbitrarily; dollar and volume bars synchronize sampling with information arrival.</li>
+<li>Reason 4 (Wrong Labeling): Standard fixed-horizon labeling ignores path risk. The triple barrier method and meta-labeling (secondary model deciding bet execution) optimize trade size and precision.</li>
+<li>Reason 5 (Non-i.i.d. Samples): Overlapping financial outcomes violate i.i.d. assumptions; sample uniqueness weights must be applied.</li>
+<li>Reason 6 (Cross-Validation Failure): Standard k-fold CV leaks future information; purged and embargoed cross-validation must be used.</li>
+<li>Reason 7 (Backtest Overfitting): Repeated backtesting generates inflated Sharpe ratios. The Deflated Sharpe Ratio (DSR) adjusts for N_trials, sample length, skewness, and kurtosis.</li>
+</ul>
+<p><strong>Reitan Kapital — Prof. Marcos López de Prado, "Professor Marcos Lopez de Prado on Machine Learning in Asset Management - Kapitaleierdagen 2024" (2024-12-17) <a href="https://www.youtube.com/watch?v=fOCzNFwmM7Y">https://www.youtube.com/watch?v=fOCzNFwmM7Y</a>:</strong></p>
+<ul>
+<li>Demonstrates hierarchical clustering on 5,000 corporate bonds, revealing 4 dominant risk clusters.</li>
+<li>Explains that HRP's tree structure requires only N − 1 observations, reducing historical data requirements from 5 years to 2 months and boosting out-of-sample Sharpe ratios by 31% in simulations.</li>
+<li>Outlines "corrective AI" (meta-labeling) to filter false positive signals generated by primary models or discretionary managers.</li>
+<li>Advocates "allocation to allocators" (bagging/ensembling multiple optimization algorithms) to eliminate single-optimizer point-of-failure risk.</li>
+</ul>
+<p><strong>CFA Institute Research Foundation — Marcos López de Prado &amp; Vincent Zoonekynd, "Causality in Factor Investing: Marcos López de Prado, PhD &amp; Vincent Zoonekynd, PhD" (2026-01-20) <a href="https://www.youtube.com/watch?v=NHQ0Q30fAP4">https://www.youtube.com/watch?v=NHQ0Q30fAP4</a>:</strong></p>
+<ul>
+<li>Attributes the "Factor Zoo" to P-hacking and brute-force regression trials without causal models.</li>
+<li>Distinguishes explanatory/causal factor models from predictive/forecasting models.</li>
+<li>Explains Collider Bias: controlling for colliders (effects of both cause and return) distorts beta signs, causing models to buy what should be sold.</li>
+<li>Notes that Granger causality measures precedence, not true physical/economic causality.</li>
+<li>Recommends causal discovery algorithms (PC algorithm, GES, LiNGAM) to build Directed Acyclic Graphs (DAGs) and isolate true upstream confounders from downstream colliders.</li>
+</ul>
+<h3 id="agreement-and-contradiction-with-academic-sources-literature-reviewmd-1">Agreement &amp; Contradiction with Academic Sources (literature-review.md)</h3>
+<p><strong>Harvey, Liu and Zhu (2016) &amp; P-Hacking:</strong> López de Prado (CFEM; CFA Institute) directly reinforces academic findings on backtest overfitting. The Deflated Sharpe Ratio (DSR) provides a formal mathematical correction for the number of backtest iterations (N_trials) and non-Gaussian returns.</p>
+<p><strong>Factor Zoo &amp; Causal Econometrics:</strong> López de Prado and Zoonekynd (CFA Institute) argue that regressions without a causal graph can suffer from collider bias, which can flip the sign of a factor.</p>
+<p><strong>Structural Optimization (HRP &amp; NCO):</strong> López de Prado (Reitan Kapital) explains that the tree structure of HRP needs far less data than estimating every pairwise link, which he puts at about five years of history.</p>
+<h3 id="implications-for-the-three-block-portfolio-1">Implications for the Three-Block Portfolio</h3>
+<p><strong>What it justifies:</strong> Justifies grouping the Growth sleeve ETFs into hierarchical risk clusters (HRP/NCO) prior to weight allocation, and applying DSR screening when selecting factor tilt ETFs to avoid overfit backtests.</p>
+<p><strong>What it does NOT justify:</strong> Does NOT justify deploying unconstrained "black-box" price-prediction machine learning models, nor does it justify altering the Safety sleeve's fixed-income allocation based on short-term algorithmic signals.</p>
+<h2 id="3-evidence-based-practitioners">3. Evidence-Based Practitioners</h2>
+<h3 id="the-claim-2">The Claim</h3>
+<p>Evidence-based practitioners emphasize that broad market-cap weighted global equity indexing captures ~70% of available equity returns while eliminating single-country ruin risk and active management underperformance. Deviating from market-cap weighting via naive equal weighting or unconstrained tactical shifts introduces unwanted sector concentrations, transaction costs, and complexity without delivering net alpha after fees.</p>
+<h3 id="verified-video-evidence-2">Verified Video Evidence</h3>
+<p><strong>Ben Felix — "The Problem with Equal Weight Index Funds" (2026-01-25) <a href="https://www.youtube.com/watch?v=xu7kMpLbJJs">https://www.youtube.com/watch?v=xu7kMpLbJJs</a>:</strong></p>
+<ul>
+<li>Shows that index concentration fluctuates naturally over time and has no strong historical relationship with lower future market returns.</li>
+<li>Demonstrates that equal-weight funds derive historical outperformance from implicit tilts to Size (small-cap) and Value, not equal weighting magic.</li>
+<li>Identifies unintended sector distortions in equal-weighted funds (heavy tech underweight, industrial overweight).</li>
+<li>Argues that intentional, low-turnover factor funds (e.g., Dimensional US Core Equity) capture Size and Value premiums far more efficiently than naive equal weighting.</li>
+</ul>
+<p><strong>Dimensional Fund Advisors — Mark Gochner, Jake DeKinder, Wes Krill, "The Death of the 60/40 Portfolio? | The Informed Investor 30" (2026-01-30) <a href="https://www.youtube.com/watch?v=2NSlam-fxuo">https://www.youtube.com/watch?v=2NSlam-fxuo</a>:</strong></p>
+<ul>
+<li>Explains that combining stocks and bonds reduces portfolio volatility substantially while sacrificing minimal long-term return.</li>
+<li>Shows that 2022 was the only year since 1979 (47 years, Russell 3000 and Bloomberg US Aggregate) in which stocks and bonds fell together.</li>
+<li>Warns that "shiny object" products such as buffered ETFs can bring more complexity, less transparency and higher fees, without being clearly better.</li>
+</ul>
+<p><strong>Otávio Paranhos — "Começando a Carteira GLOBAL do Zero: VT vale a pena?" (2020-09-12) <a href="https://www.youtube.com/watch?v=iqz3OZo9nZQ">https://www.youtube.com/watch?v=iqz3OZo9nZQ</a>:</strong></p>
+<ul>
+<li>Cites return skewness data showing 40% of individual stocks deliver negative lifetime returns; only 4-7% of stocks drive all net market outperformance above Treasury bills.</li>
+<li>Claims that about 70 percent of returns come from market exposure, citing Fama and French.</li>
+<li>Highlights institutional adoption of neutral market-cap global indexing by Norges Bank Investment Fund (~$1T) and the US Federal Thrift Savings Plan (TSP).</li>
+</ul>
+<p><strong>Abner Araujo — "IVV ou VT: Qual o Melhor ETF para Investir no Exterior" (2025-06-30) <a href="https://www.youtube.com/watch?v=RJbQe-cQnrM">https://www.youtube.com/watch?v=RJbQe-cQnrM</a>:</strong></p>
+<ul>
+<li>Cites SPIVA data showing &gt;90% of active fund managers underperform the passive S&amp;P 500 index over 15-year periods. (Note: Presenter provides consulting disclaimers for Portfel/Grupo Primo).</li>
+<li>Compares IVV (S&amp;P 500) to VT (Vanguard Total World Stock), saying VT reduces single-country and local risk.</li>
+</ul>
+<p><strong>Fabio Fares — "Conheça o VT: UM MUNDO INTEIRO EM UM ÚNICO ETF" (2025-09-10) <a href="https://www.youtube.com/watch?v=mInrZVtLAsc">https://www.youtube.com/watch?v=mInrZVtLAsc</a>:</strong></p>
+<ul>
+<li>Outlines VT's tracking of the FTSE Global All Cap Index (~10,000 stocks across 48 countries).</li>
+<li>Explains market-cap weighting as an automatic, objective reflection of global corporate value.</li>
+<li>Proposes a core-satellite portfolio structure: 70% VT as global core, combined with fixed income (SLQD 15%), REITs (VNQ 10%), and small-cap value (AVUV 5%).</li>
+</ul>
+<h3 id="agreement-and-contradiction-with-academic-sources-literature-reviewmd-2">Agreement &amp; Contradiction with Academic Sources (literature-review.md)</h3>
+<p><strong>Fama and French &amp; Market Factor:</strong> Ben Felix agrees that size and value drive the excess return of equal weight, and shows that intentional factor funds get the same tilts with less turnover.</p>
+<p><strong>Bessembinder (2018) &amp; Equity Return Skewness:</strong> Otávio Paranhos makes the same point as Bessembinder (2018), without naming him, pointing out that because equity returns are heavily right-skewed (driven by 4-7% of stocks), broad cap-weighted indexing (VT/VWRA) is essential to guarantee holding those rare winning stocks.</p>
+<p><strong>SPIVA &amp; Active Underperformance:</strong> Abner Araujo corroborates Jensen (1968) and modern SPIVA literature on the persistent underperformance of active stock selection after fees.</p>
+<h3 id="implications-for-the-three-block-portfolio-2">Implications for the Three-Block Portfolio</h3>
+<p><strong>What it justifies:</strong> Justifies using a broad, low-cost global market-cap weighted ETF (e.g., VT or VWRA) as the core benchmark and foundational holding for the Growth sleeve.</p>
+<p><strong>What it does NOT justify:</strong> Does NOT justify paying high fees for complex active market-timing wrappers, nor does it justify replacing market-cap core holdings with naive equal weighting.</p>
+<h2 id="4-factor-etfs-after-launch">4. Factor ETFs After Launch</h2>
+<h3 id="the-claim-3">The Claim</h3>
+<p>While backtested factor strategies and equal-weighted indexes show strong historical outperformance, live fund performance frequently deteriorates post-launch due to trading drag, high turnover, negative momentum interactions, and backtest overfitting. Systematic factor tilts (Size, Value, Profitability) offer legitimate expected return premiums, but must be implemented via intentional, low-turnover trade rules rather than rigid index rebalancing.</p>
+<h3 id="verified-video-evidence-3">Verified Video Evidence</h3>
+<p><strong>Ben Felix — "The Problem with Equal Weight Index Funds" (2026-01-25) <a href="https://www.youtube.com/watch?v=xu7kMpLbJJs">https://www.youtube.com/watch?v=xu7kMpLbJJs</a>:</strong></p>
+<ul>
+<li>Shows that equal-weight funds load positively on Size and Value factors, but trade systematically against Momentum.</li>
+<li>Highlights annual turnover &gt;10x higher in equal-weight ETFs compared to cap-weighted ETFs, generating substantial transaction cost drag.</li>
+<li>Demonstrates that intentional factor implementations (e.g., Dimensional US Core Equity) achieve similar Size and Value factor loadings while controlling sector bets, managing momentum drag, and maintaining low turnover.</li>
+</ul>
+<p><strong>CFA Institute Research Foundation — Marcos López de Prado &amp; Vincent Zoonekynd, "Causality in Factor Investing: Marcos López de Prado, PhD &amp; Vincent Zoonekynd, PhD" (2026-01-20) <a href="https://www.youtube.com/watch?v=NHQ0Q30fAP4">https://www.youtube.com/watch?v=NHQ0Q30fAP4</a>:</strong></p>
+<ul>
+<li>Explains that factors found without a causal model are often false discoveries that fail out of sample.</li>
+</ul>
+<p><strong>JP Azevedo — "Sobreposição de ETFs: quando fazer e quando não fazer na sua carteira" (2025-08-21) <a href="https://www.youtube.com/watch?v=v8FOFtIjPWI">https://www.youtube.com/watch?v=v8FOFtIjPWI</a>:</strong></p>
+<ul>
+<li>Explains that intentional ETF overlap (e.g., combining a cap-weighted core with a targeted Value ETF like VTV or Small-Cap Value like VIOV) is justified when targeting specific factor premiums.</li>
+<li>Warns against redundant core overlap (e.g., holding VT and VTI together, which results in 61% weight overlap without adding factor exposure).</li>
+</ul>
+<h3 id="agreement-and-contradiction-with-academic-sources-literature-reviewmd-3">Agreement &amp; Contradiction with Academic Sources (literature-review.md)</h3>
+<p><strong>McLean and Pontiff (2016) &amp; Factor Decay:</strong> López de Prado (CFA Institute) is consistent with the idea that many published factors fail out of sample, but neither video discusses decay after publication. Ben Felix shows that equal weighting carries negative momentum loading and high turnover.</p>
+<p><strong>Jegadeesh and Titman (1993) &amp; Momentum Interaction:</strong> Ben Felix cites Jegadeesh and Titman (1993), showing that rigid equal-weight rebalancing acts as a negative momentum bet, creating an explicit drag on live performance.</p>
+<h3 id="implications-for-the-three-block-portfolio-3">Implications for the Three-Block Portfolio</h3>
+<p><strong>What it justifies:</strong> Justifies adding targeted, low-turnover factor tilt ETFs as satellite holdings in the Growth sleeve alongside a broad global core.</p>
+<p><strong>What it does NOT justify:</strong> Does NOT justify adding naive equal-weighted or unconstrained commercial smart beta ETFs that introduce high turnover and negative momentum drag.</p>
+<h2 id="5-rebalancing">5. Rebalancing</h2>
+<h3 id="the-claim-4">The Claim</h3>
+<p>Rebalancing is primarily a risk-control mechanism designed to maintain target asset distributions, rather than a reliable source of excess return. Mandatory high-frequency calendar rebalancing introduces transaction costs and negative momentum exposure, whereas rebalancing via incoming cash flows or wide tolerance bands minimizes turnover, execution drag, and taxable capital gains.</p>
+<h3 id="verified-video-evidence-4">Verified Video Evidence</h3>
+<p><strong>Ben Felix — "The Problem with Equal Weight Index Funds" (2026-01-25) <a href="https://www.youtube.com/watch?v=xu7kMpLbJJs">https://www.youtube.com/watch?v=xu7kMpLbJJs</a>:</strong></p>
+<ul>
+<li>Shows that the rebalancing built into equal-weighted ETFs drives turnover more than 10 times higher than cap weighting.</li>
+<li>Demonstrates that frequent rebalancing forces funds to sell recent winners and buy recent losers, systematically penalizing momentum.</li>
+</ul>
+<p><strong>Fabio Fares — "Conheça o VT: UM MUNDO INTEIRO EM UM ÚNICO ETF" (2025-09-10) <a href="https://www.youtube.com/watch?v=mInrZVtLAsc">https://www.youtube.com/watch?v=mInrZVtLAsc</a>:</strong></p>
+<ul>
+<li>Explains that market-cap weighted global equity ETFs rebalance automatically as prices change, with nothing for the investor to do.</li>
+</ul>
+<h3 id="agreement-and-contradiction-with-academic-sources-literature-reviewmd-4">Agreement &amp; Contradiction with Academic Sources (literature-review.md)</h3>
+<p><strong>Rebalancing and momentum:</strong> Ben Felix shows that rebalancing sells recent winners and buys recent losers, which costs return when momentum is strong.</p>
+<p><strong>Cash-flow rebalancing:</strong> No video in this review discusses rebalancing with new money; that support comes from the academic review.</p>
+<h3 id="implications-for-the-three-block-portfolio-4">Implications for the Three-Block Portfolio</h3>
+<p><strong>What it justifies:</strong> Justifies rebalancing across the Safety, Inflation, and Growth jobs primarily using incoming cash inflows, and employing wide tolerance bands (rather than calendar schedules) for internal Growth sleeve rebalancing.</p>
+<p><strong>What it does NOT justify:</strong> Does NOT justify frequent high-frequency calendar rebalancing within the Growth sleeve.</p>
+<h2 id="6-brazilian-channels-on-investing-abroad-with-etfs">6. Brazilian Channels on Investing Abroad with ETFs</h2>
+<h3 id="the-claim-5">The Claim</h3>
+<p>For a Brazilian resident spending in BRL, international ETF investing requires optimizing tax friction under Law 14.754/2023, eliminating US estate tax exposure, and choosing between US-listed ETFs (e.g., VT, IVV), Irish-domiciled UCITS ETFs (e.g., VWRA, IWDA), and B3 BDR wrappers (e.g., IVVB11, VWRA11). Irish UCITS ETFs avoid the US estate tax (up to 40 percent) and reduce US dividend withholding, and accumulating share classes reinvest dividends inside the fund. Global currency diversification protects BRL purchasing power over long horizons.</p>
+<h3 id="verified-video-evidence-5">Verified Video Evidence</h3>
+<p><strong>BTG Pactual — Carol, "ETFs UCITS: como investir no exterior pagando menos imposto | Investindo pelo Mundo" (2026-05-27) <a href="https://www.youtube.com/watch?v=unQ4CCrmL30">https://www.youtube.com/watch?v=unQ4CCrmL30</a>:</strong></p>
+<ul>
+<li>Explains UCITS (European-regulated ETF) structural and tax benefits for non-US investors.</li>
+<li>Outlines US tax risks for non-residents: up to 30 percent dividend withholding and US estate tax (imposto sobre herança) up to 40 percent.</li>
+<li>Explains that Ireland-domiciled UCITS ETFs are not exposed to US estate tax.</li>
+<li>Details accumulating (acumulador) UCITS ETFs, which automatically reinvest dividends inside the fund and simplify Brazilian tax declarations. (Note: Content hosted by BTG Pactual promoting international brokerage services).</li>
+</ul>
+<p><strong>Abner Araujo — "IVV ou VT: Qual o Melhor ETF para Investir no Exterior" (2025-06-30) <a href="https://www.youtube.com/watch?v=RJbQe-cQnrM">https://www.youtube.com/watch?v=RJbQe-cQnrM</a>:</strong></p>
+<ul>
+<li>Compares US-listed IVV to B3 wrapper IVVB11, noting that direct offshore ETF holdings offer lower expense ratios than local Brazilian wrappers. (Note: Presenter provides consulting disclaimers for Portfel/Grupo Primo).</li>
+</ul>
+<p><strong>Fabio Fares — "Conheça o VT: UM MUNDO INTEIRO EM UM ÚNICO ETF" (2025-09-10) <a href="https://www.youtube.com/watch?v=mInrZVtLAsc">https://www.youtube.com/watch?v=mInrZVtLAsc</a>:</strong></p>
+<ul>
+<li>Details VT's geographic breakdown (US ~64%, Europe ~14%, Pacific ~9%, Emerging ~10%).</li>
+<li>Identifies emerging market volatility (~10% allocation) and US concentration as key structural risks.</li>
+</ul>
+<p><strong>Otávio Paranhos — "Começando a Carteira GLOBAL do Zero: VT vale a pena?" (2020-09-12) <a href="https://www.youtube.com/watch?v=iqz3OZo9nZQ">https://www.youtube.com/watch?v=iqz3OZo9nZQ</a>:</strong></p>
+<ul>
+<li>Recommends Irish-domiciled UCITS ETFs (e.g., VWRA) via an international broker to reduce dividend taxes.</li>
+<li>Explains currency hedging dynamics: holding emerging market and global currency assets cushions BRL-spending investors against USD/BRL exchange rate swings.</li>
+</ul>
+<p><strong>Papo de Bolsa — "Descubra o ETF VT: O ETF mais Coringa para o Investidor" (2025-01-04) <a href="https://www.youtube.com/watch?v=Kjk8uPTMs1M">https://www.youtube.com/watch?v=Kjk8uPTMs1M</a>:</strong></p>
+<ul>
+<li>Notes VT holds ~9,974 companies worldwide across developed and emerging markets.</li>
+<li>Highlights how global diversification balances regional economic cycles.</li>
+</ul>
+<p><strong>JP Azevedo — "Sobreposição de ETFs: quando fazer e quando não fazer na sua carteira" (2025-08-21) <a href="https://www.youtube.com/watch?v=v8FOFtIjPWI">https://www.youtube.com/watch?v=v8FOFtIjPWI</a>:</strong></p>
+<ul>
+<li>Uses ETF Research Center tool to demonstrate redundant overlap (e.g., SPY + QQQ = 51% overlap).</li>
+<li>Demonstrates that holding VT and VTI together results in 61 percent weight overlap; the two play the same role, so holding both adds nothing.</li>
+</ul>
+<h3 id="agreement-and-contradiction-with-academic-sources-literature-reviewmd-5">Agreement &amp; Contradiction with Academic Sources (literature-review.md)</h3>
+<p><strong>International Tax Drag &amp; Estate Tax Risk:</strong> BTG Pactual describes the 30 percent withholding and the estate tax risk of US-domiciled ETFs. The 15 percent rate inside Irish UCITS ETFs is documented by State Street (Huang 2026) in the academic review, not by these videos.</p>
+<p><strong>Law 14.754/2023 (Offshore Taxation in Brazil):</strong> No video in this review discusses the law. Otávio's video predates it. The tax treatment must be checked in the text of the law.</p>
+<p><strong>B3 Wrappers vs. Offshore UCITS:</strong> Abner Araujo notes that IVV charges a lower management fee than IVVB11.</p>
+<h3 id="implications-for-the-three-block-portfolio-5">Implications for the Three-Block Portfolio</h3>
+<p><strong>What it justifies:</strong> Justifies considering Irish-domiciled accumulating UCITS ETFs as the wrapper for foreign exposure, to avoid US estate tax and reduce dividend withholding. The tax effect under Law 14.754/2023 still needs to be checked. It justifies holding BRL-denominated short bonds (Safety) and inflation-linked bonds (Inflation) locally in Brazil, while holding the Growth sleeve offshore.</p>
+<p><strong>What it does NOT justify:</strong> Does NOT justify holding large amounts of US-domiciled ETFs without addressing US estate tax exposure, nor does it justify redundant ETF pairings (like holding VT and VTI together).</p>
+<h2 id="verified-reference-list">Verified Reference List</h2>
+<p><strong>Abner Araujo</strong>
+Presenter: Abner Araujo (Investment Consultant)
+Title: "IVV ou VT: Qual o Melhor ETF para Investir no Exterior"
+Upload Date: June 30, 2025
+URL: <a href="https://www.youtube.com/watch?v=RJbQe-cQnrM" target="_blank" rel="noopener">https://www.youtube.com/watch?v=RJbQe-cQnrM</a></p>
+<p><strong>Ben Felix</strong>
+Presenter: Ben Felix (PWL Capital)
+Title: "The Problem with Equal Weight Index Funds"
+Upload Date: January 25, 2026
+URL: <a href="https://www.youtube.com/watch?v=xu7kMpLbJJs" target="_blank" rel="noopener">https://www.youtube.com/watch?v=xu7kMpLbJJs</a></p>
+<p><strong>BTG Pactual</strong>
+Presenter: Carol (BTG Pactual)
+Title: "ETFs UCITS: como investir no exterior pagando menos imposto | Investindo pelo Mundo"
+Upload Date: May 27, 2026
+URL: <a href="https://www.youtube.com/watch?v=unQ4CCrmL30" target="_blank" rel="noopener">https://www.youtube.com/watch?v=unQ4CCrmL30</a></p>
+<p><strong>CFA Institute Research Foundation</strong>
+Presenters: Marcos López de Prado, PhD; Vincent Zoonekynd, PhD; Lada Moberg, PhD
+Title: "Causality in Factor Investing: Marcos López de Prado, PhD &amp; Vincent Zoonekynd, PhD"
+Upload Date: January 20, 2026
+URL: <a href="https://www.youtube.com/watch?v=NHQ0Q30fAP4" target="_blank" rel="noopener">https://www.youtube.com/watch?v=NHQ0Q30fAP4</a></p>
+<p><strong>Cornell Financial Engineering Manhattan (CFEM)</strong>
+Presenter: Marcos López de Prado, PhD
+Title: "Marcos Lopez de Prado: The 7 Reasons Most Machine Learning Funds Fail"
+Upload Date: May 13, 2019
+URL: <a href="https://www.youtube.com/watch?v=npA8sI-k328" target="_blank" rel="noopener">https://www.youtube.com/watch?v=npA8sI-k328</a></p>
+<p><strong>Dimensional Fund Advisors</strong>
+Presenters: Mark Gochner, Jake DeKinder, Wes Krill
+Title: "The Death of the 60/40 Portfolio? | The Informed Investor 30"
+Upload Date: January 30, 2026
+URL: <a href="https://www.youtube.com/watch?v=2NSlam-fxuo" target="_blank" rel="noopener">https://www.youtube.com/watch?v=2NSlam-fxuo</a></p>
+<p><strong>Fabio Fares</strong>
+Presenter: Fabio Fares
+Title: "Conheça o VT: UM MUNDO INTEIRO EM UM ÚNICO ETF | ETFs | Investimento no Exterior"
+Upload Date: September 10, 2025
+URL: <a href="https://www.youtube.com/watch?v=mInrZVtLAsc" target="_blank" rel="noopener">https://www.youtube.com/watch?v=mInrZVtLAsc</a></p>
+<p><strong>Finance Research Gate</strong>
+Presenter: Finance Research Gate
+Title: "Hierarchical Risk Parity HRP Portfolio Optimization"
+Upload Date: February 15, 2026
+URL: <a href="https://www.youtube.com/watch?v=_OPDNwtubZg" target="_blank" rel="noopener">https://www.youtube.com/watch?v=_OPDNwtubZg</a></p>
+<p><strong>Finance Research Gate</strong>
+Presenter: Finance Research Gate
+Title: "Risk Parity Portfolio Optimization Explained Equal Risk Contributions in Practice"
+Upload Date: February 12, 2026
+URL: <a href="https://www.youtube.com/watch?v=aIJ9MM7I9kw" target="_blank" rel="noopener">https://www.youtube.com/watch?v=aIJ9MM7I9kw</a></p>
+<p><strong>JP Azevedo</strong>
+Presenter: JP Azevedo
+Title: "Sobreposição de ETFs: quando fazer e quando não fazer na sua carteira"
+Upload Date: August 21, 2025
+URL: <a href="https://www.youtube.com/watch?v=v8FOFtIjPWI" target="_blank" rel="noopener">https://www.youtube.com/watch?v=v8FOFtIjPWI</a></p>
+<p><strong>Otávio Paranhos</strong>
+Presenter: Otávio Paranhos
+Title: "Começando a Carteira GLOBAL do Zero: VT vale a pena?"
+Upload Date: September 12, 2020
+URL: <a href="https://www.youtube.com/watch?v=iqz3OZo9nZQ" target="_blank" rel="noopener">https://www.youtube.com/watch?v=iqz3OZo9nZQ</a></p>
+<p><strong>Papo de Bolsa</strong>
+Presenter: Papo de Bolsa
+Title: "Descubra o ETF VT: O ETF mais Coringa para o Investidor"
+Upload Date: January 4, 2025
+URL: <a href="https://www.youtube.com/watch?v=Kjk8uPTMs1M" target="_blank" rel="noopener">https://www.youtube.com/watch?v=Kjk8uPTMs1M</a></p>
+<p><strong>Reitan Kapital</strong>
+Presenter: Prof. Marcos López de Prado
+Title: "Professor Marcos Lopez de Prado on Machine Learning in Asset Management - Kapitaleierdagen 2024"
+Upload Date: December 17, 2024
+URL: <a href="https://www.youtube.com/watch?v=fOCzNFwmM7Y" target="_blank" rel="noopener">https://www.youtube.com/watch?v=fOCzNFwmM7Y</a></p>
+<h2 id="not-found-content-not-verified">Not Found / Content Not Verified</h2>
+<p>The following videos and specific topics mentioned in the search scope were filtered out, missing, or unavailable via video transcript tools, and were excluded from the review:</p>
+<ul>
+<li>Lead-Lag Media, "Stagflation Is Back: How Risk Parity Actually Works in 2026" (<a href="https://www.youtube.com/watch?v=UkTDKOQO_2A" target="_blank" rel="noopener">https://www.youtube.com/watch?v=UkTDKOQO_2A</a>) — Filtered by YouTube API corpus restrictions; transcript content not verified.</li>
+<li>Patrick Boyle — No specific video transcripts retrieved for rebalancing or portfolio optimization.</li>
+<li>Corey Hoffstein (Newfound Research) — No specific video transcripts retrieved for rebalancing timing luck.</li>
+<li>Meb Faber — No specific video transcripts retrieved for asset allocation or tail risk.</li>
+<li>Ray Dalio / Bridgewater — No specific video transcripts retrieved for All Weather or Risk Parity.</li>
+<li>Alex Shahidi — No specific video transcripts retrieved.</li>
+</ul></section>
+</main>
+</div>
+</body>
+</html>
